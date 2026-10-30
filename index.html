@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f8f9fd">
-  <meta name="description" content="MaplePath Jobs: a Canada-focused job discovery and application tracking dashboard.">
-  <title>MaplePath Jobs | Discover your next opportunity in Canada</title>
+  <meta name="description" content="Pankaj Jobs: a Canada-focused job discovery and application tracking dashboard.">
+  <title>Pankaj Jobs | Discover your next opportunity in Canada</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
     :root { font-family:'DM Sans',system-ui,sans-serif; color:#202945; background:#f7f8fc; --navy:#182342; --muted:#77819a; --line:#e7eaf3; --purple:#6048ce; --purple-light:#f1eeff; --red:#ee525c; --green:#169d76; --shadow:0 12px 40px rgba(26,40,78,.055); }
@@ -156,9 +156,9 @@
 <body>
 <div class="shell">
   <aside>
-    <a class="brand" href="#top" aria-label="MaplePath Jobs home">
+    <a class="brand" href="#top" aria-label="Pankaj Jobs home">
       <div class="brand-symbol"><svg width="25" height="25" viewBox="0 0 36 36" aria-hidden="true"><path fill="currentColor" d="M18 2 21 9l5-2-1 6 6 1-5 5 3 3-10 2 1 9h-4l1-9-10-2 3-3-5-5 6-1-1-6 5 2z"/></svg></div>
-      <div class="brand-name">maplepath<small>JOBS · CANADA</small></div>
+      <div class="brand-name">Pankaj<small>JOBS · CANADA</small></div>
     </a>
     <div class="sidebar-section"><div class="section-label">WORKSPACE</div><nav class="sidebar-nav" aria-label="Job status">
       <button class="nav-btn active" data-view="all"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> Discover jobs </button>
@@ -208,7 +208,7 @@
           <a class="source-card" id="gcLink" href="https://www.canada.ca/en/services/jobs/opportunities/government.html" target="_blank" rel="noopener noreferrer"><div><div class="source-title">♧ &nbsp; Federal Government</div><p class="source-sub">Find Government of Canada employment and recruitment information.</p></div><span class="source-bottom">Explore careers ↗</span></a>
         </div>
       </section>
-      <footer>MaplePath Jobs is an independent job discovery and personal tracking prototype. Live remote listings are sourced from <a href="https://jobicy.com/" target="_blank" rel="noopener noreferrer">Jobicy</a> and link to their original posting pages. Listings are not guaranteed active; always verify eligibility and details with the employer. Your saved statuses and manual listings stay in this browser, not on a shared server. No automated applications or email alerts are provided.</footer>
+      <footer>Pankaj Jobs is an independent job discovery and personal tracking prototype. Live remote listings are sourced from <a href="https://jobicy.com/" target="_blank" rel="noopener noreferrer">Jobicy</a> and link to their original posting pages. Listings are not guaranteed active; always verify eligibility and details with the employer. Your saved statuses and manual listings stay in this browser, not on a shared server. No automated applications or email alerts are provided.</footer>
     </div>
   </main>
 </div>
@@ -233,7 +233,7 @@
 (() => {
   'use strict';
   const $ = id => document.getElementById(id);
-  const KEY = 'maplepath:v1:';
+  const KEY = 'Pankaj:v1:';
   const HOUR = 60 * 60 * 1000;
   const statuses = ['new','saved','applied','interview','offer','skipped'];
   const cities = {ON:'Ontario',BC:'British Columbia',AB:'Alberta',QC:'Quebec',MB:'Manitoba',SK:'Saskatchewan',NS:'Nova Scotia',NB:'New Brunswick',NL:'Newfoundland and Labrador',PE:'Prince Edward Island',NT:'Northwest Territories',NU:'Nunavut',YT:'Yukon'};
@@ -397,10 +397,10 @@
   function csvDownload(){
     const lines=[['title','company','location','province','arrangement','salary_min','salary_max','currency','period','date','source','status','url']];
     results.forEach(j=>lines.push([j.title,j.company,j.location,j.province,j.arrangement,j.salaryMin,j.salaryMax,j.currency,j.period,j.date,j.source,getStatus(j),j.url]));
-    const csv=lines.map(row=>row.map(c=>'"'+String(c??'').replace(/"/g,'""')+'"').join(',')).join('\r\n');download(new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}),'maplepath_canada_jobs.csv');notify('Exported '+results.length+' matching jobs.');
+    const csv=lines.map(row=>row.map(c=>'"'+String(c??'').replace(/"/g,'""')+'"').join(',')).join('\r\n');download(new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}),'Pankaj_canada_jobs.csv');notify('Exported '+results.length+' matching jobs.');
   }
   function download(blob,name){const u=URL.createObjectURL(blob);const a=document.createElement('a');a.href=u;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),2000);}
-  function exportJSON(){const payload=allJobs.map(j=>({...j,status:getStatus(j)}));download(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),'maplepath_jobs_backup.json');notify('Exported a JSON backup.');}
+  function exportJSON(){const payload=allJobs.map(j=>({...j,status:getStatus(j)}));download(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),'Pankaj_jobs_backup.json');notify('Exported a JSON backup.');}
   document.querySelectorAll('.nav-btn[data-view]').forEach(b=>b.addEventListener('click',()=>setView(b.dataset.view)));
   document.querySelectorAll('.stat').forEach(b=>b.addEventListener('click',()=>{if(b.dataset.stat==='recent'){view='all';quickDate=true;document.querySelectorAll('.nav-btn[data-view]').forEach(x=>x.classList.toggle('active',x.dataset.view==='all'));render();$('jobsSection').scrollIntoView({behavior:'smooth'});}else setView(b.dataset.stat);}));
   for(const id of ['search','province','arrangement','minSalary','ageFilter','sort'])$(id).addEventListener(id==='search'?'input':'change',()=>{shown=24;render();});
