@@ -5,120 +5,154 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="dark">
 <meta name="robots" content="noindex, nofollow">
-<title>Job Board - Canada</title>
+<title>Job Board</title>
 <style>
-:root{--bg:#0e1116;--panel:#161b22;--panel2:#1c232c;--line:#2a323d;--text:#e6edf3;--muted:#8b97a5;--accent:#e5484d;--accent2:#3fb68b;--blue:#58a6ff;--wa:#25d366}
+:root{--bg:#0a0d1f;--card:#12162d;--card2:#181d3a;--line:#262c4d;--text:#f1f3ff;--muted:#98a1c6;--accent:#6b7cff;--accent2:#8b5cf6;--good:#3ecf9a;--bad:#ff7a82;--wa:#25d366}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
-.wrap{max-width:1100px;margin:0 auto;padding:24px 16px 64px}
-.profile{display:flex;gap:16px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:22px}
-.profile img{width:84px;height:84px;border-radius:50%;object-fit:cover;border:3px solid var(--accent);flex:none}
-.profile h2{margin:0;font-size:20px}
-.profile .head{color:var(--text);margin:2px 0 6px}
-.badges{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
-.badge{font-size:12px;padding:2px 9px;border-radius:99px;background:#3b1d1f;border:1px solid var(--accent);color:#ffb3b5}
-.badge.loc{background:var(--panel2);border-color:var(--line);color:var(--muted)}
-.plinks{display:flex;flex-wrap:wrap;gap:8px}
-.plinks a{font-size:13px;color:var(--blue);text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:3px 10px;background:var(--panel2)}
-.plinks a:hover{border-color:var(--blue)}
-h1{margin:0 0 4px;font-size:26px}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100vh}
+a{color:inherit}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+.top{display:flex;justify-content:space-between;align-items:center;padding:26px 0 18px;position:relative}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:700;font-size:24px}
+.logo{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;font-size:18px;color:#fff}
+.pillwrap{position:relative}
+.pill{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);color:#cfd5f5;border-radius:99px;padding:6px 16px 6px 6px;font:inherit;font-size:15px;font-weight:600;cursor:pointer}
+.pill:hover,.pill[aria-expanded=true]{border-color:var(--accent)}
+.pill img{width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid var(--line)}
+.pop{position:absolute;right:0;top:calc(100% + 10px);width:min(340px,92vw);background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;z-index:10;box-shadow:0 18px 50px rgba(0,0,0,.5)}
+.pop .who{display:flex;gap:14px;align-items:center}
+.pop .who img{width:72px;height:72px;border-radius:50%;object-fit:cover;border:3px solid var(--accent);flex:none}
+.pop h3{margin:0;font-size:19px}
+.pop .head{color:var(--muted);font-size:14px;margin-top:2px}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 4px}
+.badge{font-size:12px;padding:2px 10px;border-radius:99px;background:#1e2450;border:1px solid var(--accent);color:#c3caff}
+.badge.loc{background:var(--card2);border-color:var(--line);color:var(--muted)}
+.pop .acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.btn,button{background:var(--card2);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:8px 13px;font:inherit;font-size:14px;cursor:pointer;text-decoration:none;display:inline-block}
+.btn:hover,button:hover{border-color:var(--accent)}
+.btn.wa{background:var(--wa);border-color:var(--wa);color:#08210f;font-weight:600}
+button.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));border-color:transparent;color:#fff}
+button.on-keep{background:#10382c;border-color:var(--good);color:#8be6c3}
+h1.big{font-size:26px;margin:22px 0 4px;letter-spacing:-.01em}
+.lead{color:var(--muted);margin:0 0 22px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.pcard{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 20px 18px;transition:border-color .15s,transform .15s}
+.pcard:hover{border-color:var(--accent);transform:translateY(-2px)}
+.pcard h2{margin:0 0 8px;font-size:21px}
+.pcard p{margin:0 0 12px;color:var(--muted);font-size:15px}
+.pcard .n{color:var(--accent);font-weight:600;font-size:15px}
+.backrow{display:flex;align-items:center;gap:12px;margin:22px 0 6px;flex-wrap:wrap}
+.backrow h1{margin:0;font-size:26px}
 .sub{color:var(--muted);margin:0 0 6px}
-.wa{display:inline-flex;align-items:center;gap:8px;margin:6px 0 4px;background:var(--wa);color:#08210f;font-weight:600;text-decoration:none;border-radius:8px;padding:8px 14px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0}
-.stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
-.stat b{display:block;font-size:24px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.stat b{display:block;font-size:26px}
 .stat span{color:var(--muted);font-size:13px}
-.box{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:14px}
-.drop{border:2px dashed var(--line);border-radius:10px;padding:18px;text-align:center;color:var(--muted);cursor:pointer}
+.box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px}
+.drop{border:2px dashed var(--line);border-radius:12px;padding:20px;text-align:center;color:var(--muted);cursor:pointer}
 .drop.over{border-color:var(--accent);color:var(--text)}
-textarea{width:100%;min-height:70px;margin-top:10px;background:var(--panel2);color:var(--text);border:1px solid var(--line);border-radius:8px;padding:8px;font:12px ui-monospace,monospace}
+textarea{width:100%;min-height:70px;margin-top:10px;background:var(--card2);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:8px;font:12px ui-monospace,monospace}
 .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-input[type=search],select{background:var(--panel2);color:var(--text);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font:inherit}
+input[type=search],select{background:var(--card2);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:8px 10px;font:inherit;font-size:14px}
 input[type=search]{flex:1;min-width:200px}
-button,.btn{background:var(--panel2);color:var(--text);border:1px solid var(--line);border-radius:8px;padding:8px 12px;font:inherit;cursor:pointer;text-decoration:none;display:inline-block}
-button:hover,.btn:hover{border-color:var(--muted)}
-button.primary{background:var(--accent);border-color:var(--accent);color:#fff}
-button.on-keep{background:#12372b;border-color:var(--accent2);color:#8be0c0}
-.links a{font-size:13px}
-.count{color:var(--muted);margin:12px 2px}
-.job{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--line);border-radius:12px;padding:14px;margin-bottom:10px}
-.job.kept{border-left-color:var(--accent2)}
-.job.skipped{opacity:.5}
-.job h3{margin:0 0 2px;font-size:17px}
-.job h3 a{color:var(--text);text-decoration:none}
-.job h3 a:hover{color:var(--blue);text-decoration:underline}
 .meta{color:var(--muted);font-size:14px}
-.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
-.chip{font-size:12px;padding:2px 8px;border-radius:99px;background:var(--panel2);border:1px solid var(--line);color:var(--muted)}
-.chip.new{background:#3b1d1f;border-color:var(--accent);color:#ff9b9e}
-.chip.sal{color:var(--accent2);border-color:#1f5c47}
+.count{color:var(--muted);margin:14px 2px}
+.job{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--line);border-radius:14px;padding:16px;margin-bottom:12px}
+.job.kept{border-left-color:var(--good)}
+.job.skipped{opacity:.5}
+.job h3{margin:0 0 2px;font-size:18px}
+.job h3 a{text-decoration:none}
+.job h3 a:hover{color:var(--accent);text-decoration:underline}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.chip{font-size:12px;padding:2px 9px;border-radius:99px;background:var(--card2);border:1px solid var(--line);color:var(--muted)}
+.chip.new{background:#2a1d44;border-color:var(--accent2);color:#cdb6ff}
+.chip.sal{color:var(--good);border-color:#1f5c47}
 .actions{display:flex;gap:8px;flex-wrap:wrap}
 .empty{text-align:center;color:var(--muted);padding:40px 10px}
-.note{color:var(--muted);font-size:12px;margin-top:20px}
-@media(max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}.profile{flex-direction:column;text-align:center}.badges,.plinks{justify-content:center}}
+.note{color:var(--muted);font-size:12px;margin:22px 0 0}
+.foot{text-align:center;color:#6f789e;font-size:14px;padding:34px 20px 40px}
+@media(max-width:800px){.cards{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.brand{font-size:21px}.pill span{display:none}.pill{padding-right:6px}}
 </style>
 </head>
 <body>
 <div class="wrap">
 
-  <section class="profile">
-    <img src="profile.png" alt="Pankaj Gupta" width="84" height="84">
-    <div>
-      <h2>Pankaj Gupta</h2>
-      <div class="head">Project Manager | Scrum Master | Delivery Manager</div>
-      <div class="badges"><span class="badge">PMP</span><span class="badge">CSM</span><span class="badge">SAFe</span><span class="badge loc">Mississauga, ON</span></div>
-      <div class="plinks">
-        <a href="https://www.linkedin.com/in/pankajguptam" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a href="#" id="mailLink">Email</a>
+  <header class="top">
+    <a class="brand" href="#" id="home"><span class="logo">J</span><span>Job Board</span></a>
+    <div class="pillwrap">
+      <button class="pill" id="radar" aria-expanded="false" aria-controls="pop"><img src="profile.png" alt="Pankaj Gupta" width="36" height="36"><span>Behind the radar</span></button>
+      <div class="pop" id="pop" hidden>
+        <div class="who">
+          <img src="profile.png" alt="Pankaj Gupta" width="72" height="72">
+          <div><h3>Pankaj Gupta</h3><div class="head">Project Manager | Scrum Master | Delivery Manager</div></div>
+        </div>
+        <div class="badges"><span class="badge">PMP</span><span class="badge">CSM</span><span class="badge">SAFe</span><span class="badge loc">Mississauga, ON</span></div>
+        <div class="acts">
+          <a class="btn" href="https://www.linkedin.com/in/pankajguptam" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="btn" href="#" id="mailLink">Email</a>
+          <a class="btn wa" href="https://chat.whatsapp.com/GDxk7yQkrHt6cbmPWyyhoT?s=cl&amp;p=i&amp;mlu=4&amp;ilr=4&amp;iam=2" target="_blank" rel="noopener noreferrer">Join WhatsApp group</a>
+        </div>
       </div>
     </div>
-  </section>
+  </header>
 
-  <h1>Job search board</h1>
-  <p class="sub">Load the JSON your scraper saved, filter out noise, tag what's worth applying to.</p>
-  <p class="sub">Connect with others looking for similar roles.</p>
-  <a class="wa" href="https://chat.whatsapp.com/GDxk7yQkrHt6cbmPWyyhoT?s=cl&amp;p=i&amp;mlu=4&amp;ilr=4&amp;iam=2" target="_blank" rel="noopener noreferrer">Join WhatsApp group</a>
+  <!-- Profile picker -->
+  <main id="picker">
+    <h1 class="big">Which jobs are you looking for?</h1>
+    <p class="lead">Pick your profile to see the latest listings. You can switch any time.</p>
+    <div class="cards" id="cards"></div>
+  </main>
 
-  <div class="stats">
-    <div class="stat"><b id="sJobs">0</b><span>Jobs</span></div>
-    <div class="stat"><b id="sNew">0</b><span>New Listing</span></div>
-    <div class="stat"><b id="sKept">0</b><span>Shortlisted</span></div>
-    <div class="stat"><b id="sSkip">0</b><span>Skipped</span></div>
-  </div>
+  <!-- Board for one profile -->
+  <main id="board" hidden>
+    <div class="backrow"><a class="btn" href="#" id="back">← All profiles</a><h1 id="catTitle"></h1></div>
+    <p class="sub" id="catSub"></p>
+    <p class="sub">Connect with others looking for similar roles. <a class="btn wa" style="margin-left:6px" href="https://chat.whatsapp.com/GDxk7yQkrHt6cbmPWyyhoT?s=cl&amp;p=i&amp;mlu=4&amp;ilr=4&amp;iam=2" target="_blank" rel="noopener noreferrer">Join WhatsApp group</a></p>
 
-  <div class="box">
-    <div class="drop" id="drop">Drop a .json or .csv file here, or click to choose one<br><small>merged_deduped.json, or any single search file (LinkedIn, Indeed and other scraper output works)</small></div>
-    <input type="file" id="file" accept=".json,.csv,application/json,text/csv" hidden>
-    <textarea id="paste" placeholder="Or paste JSON here…"></textarea>
-    <div class="row" style="margin-top:8px"><button id="loadPaste" class="primary">Load pasted JSON</button><button id="resetData">Remove my uploaded jobs</button><span id="loadMsg" class="meta"></span></div>
-  </div>
-
-  <div class="box">
-    <div class="meta" style="margin-bottom:8px">Search on the source sites (opens in a new tab, past 7 days, Canada):</div>
-    <div class="row links" id="searchLinks"></div>
-  </div>
-
-  <div class="box">
-    <div class="row">
-      <input type="search" id="q" placeholder="Search title, company, location…">
-      <select id="fRole"><option value="">All roles</option></select>
-      <select id="fProv"><option value="">All provinces</option></select>
-      <select id="fCity"><option value="">All cities</option></select>
-      <select id="fArr"><option value="">Any arrangement</option><option>Remote</option><option>Hybrid</option><option>On-site</option></select>
-      <select id="fSrc"><option value="">All sources</option></select>
-      <select id="fStatus"><option value="">All statuses</option><option value="kept">Kept only</option><option value="skipped">Skipped only</option><option value="untagged">Untagged only</option></select>
-      <select id="fDate"><option value="">All time</option><option value="new">New Listing</option><option value="1">Posted today</option><option value="3">Last 3 days</option><option value="7">Last 7 days</option><option value="14">Last 14 days</option><option value="30">Last 30 days</option></select>
-      <select id="fSal"><option value="0">Any salary</option><option value="60000">$60k+</option><option value="80000">$80k+</option><option value="100000">$100k+</option><option value="120000">$120k+</option></select>
-      <button id="clear">Clear filters</button>
-      <button id="export">Export CSV</button>
+    <div class="stats">
+      <div class="stat"><b id="sJobs">0</b><span>Jobs</span></div>
+      <div class="stat"><b id="sNew">0</b><span>New Listing</span></div>
+      <div class="stat"><b id="sKept">0</b><span>Shortlisted</span></div>
+      <div class="stat"><b id="sSkip">0</b><span>Skipped</span></div>
     </div>
-  </div>
 
-  <div class="count" id="count"></div>
-  <div id="list"></div>
+    <div class="box">
+      <div class="drop" id="drop">Drop a .json or .csv file here, or click to choose one<br><small>merged_deduped.json, or any single search file (LinkedIn, Indeed and other scraper output works)</small></div>
+      <input type="file" id="file" accept=".json,.csv,application/json,text/csv" hidden>
+      <textarea id="paste" placeholder="Or paste JSON here…"></textarea>
+      <div class="row" style="margin-top:8px"><button id="loadPaste" class="primary">Load pasted JSON</button><button id="resetData">Remove my uploaded jobs</button><span id="loadMsg" class="meta"></span></div>
+    </div>
 
-  <p class="note">Keep/Skip marks and jobs you upload are saved in your own browser only. The board's listings refresh daily; remote listings come from <a href="https://jobicy.com/" target="_blank" rel="noopener noreferrer" style="color:var(--blue)">Jobicy</a> and link to the original postings. Listings may have expired, so confirm on the posting. Independent tool, not affiliated with LinkedIn, Indeed or any employer.</p>
+    <div class="box">
+      <div class="meta" style="margin-bottom:8px">Search on the source sites (opens in a new tab, past 7 days, Canada):</div>
+      <div class="row" id="searchLinks"></div>
+    </div>
+
+    <div class="box">
+      <div class="row">
+        <input type="search" id="q" placeholder="Search title, company, location…">
+        <select id="fRole"><option value="">All roles</option></select>
+        <select id="fProv"><option value="">All provinces</option></select>
+        <select id="fCity"><option value="">All cities</option></select>
+        <select id="fArr"><option value="">Any arrangement</option><option>Remote</option><option>Hybrid</option><option>On-site</option></select>
+        <select id="fSrc"><option value="">All sources</option></select>
+        <select id="fStatus"><option value="">All statuses</option><option value="kept">Kept only</option><option value="skipped">Skipped only</option><option value="untagged">Untagged only</option></select>
+        <select id="fDate"><option value="">All time</option><option value="new">New Listing</option><option value="1">Posted today</option><option value="3">Last 3 days</option><option value="7">Last 7 days</option><option value="14">Last 14 days</option><option value="30">Last 30 days</option></select>
+        <select id="fSal"><option value="0">Any salary</option><option value="60000">$60k+</option><option value="80000">$80k+</option><option value="100000">$100k+</option><option value="120000">$120k+</option></select>
+        <button id="clear">Clear filters</button>
+        <button id="export">Export CSV</button>
+      </div>
+    </div>
+
+    <div class="count" id="count"></div>
+    <div id="list"></div>
+
+    <p class="note">Listings refresh daily. Remote listings come from <a href="https://jobicy.com/" target="_blank" rel="noopener noreferrer" style="color:var(--accent)">Jobicy</a> and link to the original postings. Listings may have expired, so confirm on the posting. Independent tool, not affiliated with LinkedIn, Indeed or any employer.</p>
+  </main>
+
 </div>
+<div class="foot">Keep/Skip marks are saved in your own browser only. No cookies.</div>
 
 <script>
 (function(){
@@ -127,8 +161,29 @@ var K_USER='canadaJobs.user.v2', K_TAGS='canadaJobs.tags.v1';
 var PROV={AB:'Alberta',BC:'British Columbia',MB:'Manitoba',NB:'New Brunswick',NL:'Newfoundland and Labrador',NS:'Nova Scotia',NT:'Northwest Territories',NU:'Nunavut',ON:'Ontario',PE:'Prince Edward Island',QC:'Quebec',SK:'Saskatchewan',YT:'Yukon'};
 var PROV_NAMES={};Object.keys(PROV).forEach(function(k){PROV_NAMES[PROV[k].toLowerCase()]=k;});
 PROV_NAMES['québec']='QC';PROV_NAMES['newfoundland']='NL';
-var ROLES=[['Project Manager',/project manag|project lead|project coordinator/i],['Scrum Master / Agile',/scrum|agile/i],['Program Manager',/program manag/i],['Delivery Manager',/delivery manag|service delivery/i],['Product Manager',/product manag|product owner/i]];
-var fileJobs=[],userJobs=[],jobs=[],tags={};
+
+var CATS=[
+  {id:'product',name:'Product',desc:'Business Analyst · Product Manager · Product Owner',
+   links:['Product Manager','Product Owner','Business Analyst'],q:'product manager'},
+  {id:'project-management',name:'Project Management',desc:'Scrum Master · Agile Delivery Manager · Project Manager',
+   links:['Project Manager','Scrum Master','Delivery Manager','Program Manager'],q:'project manager'},
+  {id:'quality-assurance',name:'Quality Assurance',desc:'Functional Testing · Automation Testing',
+   links:['QA Analyst','Test Automation','Quality Assurance'],q:'qa analyst'}
+];
+// role label -> category. Order matters: the first matching pattern wins.
+var ROLES=[
+  ['Automation Testing','quality-assurance',/test automation|automation test|qa automation|\bsdet\b|automation (qa|engineer)/i],
+  ['Functional Testing','quality-assurance',/\bqa\b|quality assurance|\btester\b|testing|test (analyst|engineer|lead)/i],
+  ['Business Analyst','product',/business (systems? )?analyst/i],
+  ['Product Owner','product',/product owner/i],
+  ['Product Manager','product',/product manag/i],
+  ['Project Manager','project-management',/project (manag|lead|coord)/i],
+  ['Scrum Master / Agile','project-management',/scrum|agile/i],
+  ['Program Manager','project-management',/program manag/i],
+  ['Delivery Manager','project-management',/delivery manag|service delivery/i],
+  ['Other delivery roles','project-management',/delivery|program|project|release manager/i]
+];
+var fileJobs=[],userJobs=[],jobs=[],tags={},cat=null;
 var $=function(id){return document.getElementById(id);};
 
 function load(k,def){try{var v=JSON.parse(localStorage.getItem(k));return v==null?def:v;}catch(e){return def;}}
@@ -164,7 +219,10 @@ function detectArr(raw,loc,title){
   return '';
 }
 function safeUrl(u){u=String(u||'').trim();return /^https?:\/\//i.test(u)?u:'';}
-function roleOf(t){for(var i=0;i<ROLES.length;i++){if(ROLES[i][1].test(t))return ROLES[i][0];}return 'Other';}
+function classify(j){
+  for(var i=0;i<ROLES.length;i++){if(ROLES[i][2].test(j.title)){j.role=ROLES[i][0];j.cat=ROLES[i][1];return;}}
+  j.role='Other';j.cat='';
+}
 function num(v){if(v==null||v==='')return null;var n=Number(String(v).replace(/[^0-9.]/g,''));return isFinite(n)&&n>0?n:null;}
 
 function normalize(raw){
@@ -178,15 +236,14 @@ function normalize(raw){
   var prov=String(raw.province||'').toUpperCase();
   if(!PROV[prov])prov=detectProv(loc);
   var city=loc.split(',')[0].trim();
-  if(/^remote$/i.test(city)||PROV[city.toUpperCase()]||/^canada$/i.test(city)||/^anywhere$/i.test(city))city='';
-  var smin=num(pick(raw,['salary_min','salaryMin','min_salary']));
-  var smax=num(pick(raw,['salary_max','salaryMax','max_salary']));
+  if(/^remote/i.test(city)||PROV[city.toUpperCase()]||/^canada$/i.test(city)||/^anywhere$/i.test(city))city='';
   var src=String(pick(raw,['source','site','platform'])||'').trim();
   if(!src&&url){if(/linkedin\./i.test(url))src='LinkedIn';else if(/indeed\./i.test(url))src='Indeed';else if(/ziprecruiter\./i.test(url))src='ZipRecruiter';else if(/jobbank\.gc\.ca/i.test(url))src='Job Bank';else if(/jobicy\./i.test(url))src='Jobicy';}
   var job={title:title,company:company,location:loc,city:city,province:prov,
     arrangement:detectArr(raw,loc,title),job_type:String(pick(raw,['job_type','jobType','employment_type','type'])||'').trim(),
-    posted:d?d.toISOString().slice(0,10):'',salary_min:smin,salary_max:smax,url:url,source:src||'Other'};
-  job.role=roleOf(title);
+    posted:d?d.toISOString().slice(0,10):'',salary_min:num(pick(raw,['salary_min','salaryMin','min_salary'])),
+    salary_max:num(pick(raw,['salary_max','salaryMax','max_salary'])),url:url,source:src||'Other'};
+  classify(job);
   job.id=(url||[title,company,loc].join('|')).toLowerCase();
   return job;
 }
@@ -217,7 +274,7 @@ function parseCSV(text){
 }
 function rebuild(){
   var map={};
-  fileJobs.concat(userJobs).forEach(function(j){map[j.id]=j;});
+  fileJobs.concat(userJobs).forEach(function(j){classify(j);map[j.id]=j;});
   jobs=Object.keys(map).map(function(k){return map[k];});
 }
 function addUser(list){
@@ -235,17 +292,18 @@ function ingest(text,name){
     if(/\.csv$/i.test(name||'')||/^[^\[{]/.test(text.trim())){list=parseCSV(text);}
     else list=extract(JSON.parse(text));
   }catch(e){msg('Could not read that: '+e.message);return;}
-  var n=addUser(list);msg('Loaded '+list.length+' rows, '+n+' new.');refresh();
+  var n=addUser(list);msg('Loaded '+list.length+' rows, '+n+' new.');renderAll();
 }
 
 function ageDays(j){if(!j.posted)return null;return Math.floor((Date.now()-new Date(j.posted+'T12:00:00').getTime())/864e5);}
 function isNew(j){var a=ageDays(j);return a!==null&&a<=3;}
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
 function money(n){return '$'+Math.round(n/1000)+'k';}
+function inCat(){return jobs.filter(function(j){return j.cat===cat.id;});}
 
 function filtered(){
   var q=$('q').value.trim().toLowerCase(),role=$('fRole').value,prov=$('fProv').value,city=$('fCity').value,arr=$('fArr').value,src=$('fSrc').value,st=$('fStatus').value,dt=$('fDate').value,sal=+$('fSal').value;
-  var out=jobs.filter(function(j){
+  var out=inCat().filter(function(j){
     var t=tags[j.id]||'';
     if(q&&(j.title+' '+j.company+' '+j.location).toLowerCase().indexOf(q)<0)return false;
     if(role&&j.role!==role)return false;
@@ -268,15 +326,35 @@ function fillSelect(id,vals,label){
   el.innerHTML='<option value="">'+label+'</option>'+vals.map(function(v){var text=(id==='fProv'&&PROV[v])?PROV[v]:v;return '<option value="'+esc(v)+'">'+esc(text)+'</option>';}).join('');
   el.value=vals.indexOf(cur)>-1?cur:'';
 }
-function uniq(f){var s={};jobs.forEach(function(j){if(j[f])s[j[f]]=1;});return Object.keys(s).sort();}
+function uniq(list,f){var s={};list.forEach(function(j){if(j[f])s[j[f]]=1;});return Object.keys(s).sort();}
 
-function render(){
-  var list=filtered(),box=$('list');
+function renderPicker(){
+  $('cards').innerHTML=CATS.map(function(c){
+    var n=jobs.filter(function(j){return j.cat===c.id;}).length;
+    return '<a class="pcard" href="#'+c.id+'"><h2>'+esc(c.name)+'</h2><p>'+esc(c.desc)+'</p><span class="n">'+n+(n===1?' job':' jobs')+'</span></a>';
+  }).join('');
+}
+function buildLinks(){
+  var h='';
+  cat.links.forEach(function(k){
+    h+='<a class="btn" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/jobs/search/?keywords='+encodeURIComponent(k)+'&location=Canada&f_TPR=r604800&sortBy=DD">LinkedIn: '+esc(k)+' ↗</a>';
+  });
+  h+='<a class="btn" target="_blank" rel="noopener noreferrer" href="https://ca.indeed.com/jobs?q='+encodeURIComponent(cat.q)+'&fromage=7">Indeed Canada ↗</a>';
+  h+='<a class="btn" target="_blank" rel="noopener noreferrer" href="https://www.jobbank.gc.ca/findajob">Job Bank ↗</a>';
+  $('searchLinks').innerHTML=h;
+}
+function renderBoard(){
+  var base=inCat(),list=filtered(),box=$('list');
+  fillSelect('fRole',ROLES.filter(function(r){return r[1]===cat.id;}).map(function(r){return r[0];}),'All roles');
+  fillSelect('fProv',uniq(base,'province'),'All provinces');
+  fillSelect('fCity',uniq(base,'city'),'All cities');
+  fillSelect('fSrc',uniq(base,'source'),'All sources');
+  list=filtered();
   var kept=0,skip=0,nw=0;
-  jobs.forEach(function(j){if(tags[j.id]==='kept')kept++;if(tags[j.id]==='skipped')skip++;if(isNew(j))nw++;});
-  $('sJobs').textContent=jobs.length;$('sNew').textContent=nw;$('sKept').textContent=kept;$('sSkip').textContent=skip;
-  $('count').textContent=list.length+' of '+jobs.length+' jobs';
-  if(!list.length){box.innerHTML='<div class="empty">'+(jobs.length?'No jobs match these filters.':'No jobs loaded yet. Upload or paste your scraped JSON above.')+'</div>';return;}
+  base.forEach(function(j){if(tags[j.id]==='kept')kept++;if(tags[j.id]==='skipped')skip++;if(isNew(j))nw++;});
+  $('sJobs').textContent=base.length;$('sNew').textContent=nw;$('sKept').textContent=kept;$('sSkip').textContent=skip;
+  $('count').textContent=list.length+' of '+base.length+' jobs';
+  if(!list.length){box.innerHTML='<div class="empty">'+(base.length?'No jobs match these filters.':'No jobs loaded yet for this profile. Upload or paste your scraped JSON above.')+'</div>';return;}
   box.innerHTML=list.map(function(j){
     var t=tags[j.id]||'',a=ageDays(j);
     var chips=[];
@@ -296,12 +374,20 @@ function render(){
       (j.url?'<a class="btn" href="'+esc(j.url)+'" target="_blank" rel="noopener noreferrer">Open posting ↗</a>':'')+'</div></div>';
   }).join('');
 }
-function refresh(){
-  fillSelect('fRole',ROLES.map(function(r){return r[0];}).concat(['Other']),'All roles');
-  fillSelect('fProv',uniq('province'),'All provinces');
-  fillSelect('fCity',uniq('city'),'All cities');
-  fillSelect('fSrc',uniq('source'),'All sources');
-  render();
+function renderAll(){if(cat)renderBoard();else renderPicker();}
+
+function route(){
+  var h=decodeURIComponent(location.hash.replace(/^#/,''));
+  cat=CATS.filter(function(c){return c.id===h;})[0]||null;
+  $('picker').hidden=!!cat;$('board').hidden=!cat;
+  document.title=cat?'Job Board - '+cat.name:'Job Board';
+  if(cat){
+    $('catTitle').textContent=cat.name;$('catSub').textContent=cat.desc;
+    buildLinks();
+    ['q','fRole','fProv','fCity','fArr','fSrc','fStatus','fDate'].forEach(function(id){$(id).value='';});$('fSal').value='0';
+  }
+  renderAll();
+  window.scrollTo(0,0);
 }
 
 function csvCell(v){v=v==null?'':String(v);if(/^[=+\-@]/.test(v))v="'"+v;return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v;}
@@ -313,28 +399,26 @@ function exportCSV(){
   a.href=URL.createObjectURL(blob);a.download='canada-jobs.csv';document.body.appendChild(a);a.click();a.remove();
 }
 
-function buildLinks(){
-  var kws=['Project Manager','Scrum Master','Delivery Manager','Program Manager','Product Manager'],h='';
-  kws.forEach(function(k){
-    h+='<a class="btn" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/jobs/search/?keywords='+encodeURIComponent(k)+'&location=Canada&f_TPR=r604800&sortBy=DD">LinkedIn: '+esc(k)+' ↗</a>';
-  });
-  h+='<a class="btn" target="_blank" rel="noopener noreferrer" href="https://ca.indeed.com/jobs?q=project+manager&fromage=7">Indeed Canada ↗</a>';
-  h+='<a class="btn" target="_blank" rel="noopener noreferrer" href="https://www.jobbank.gc.ca/findajob">Job Bank ↗</a>';
-  $('searchLinks').innerHTML=h;
-}
-
 function init(){
   tags=load(K_TAGS,{});
   userJobs=load(K_USER,[]);
   try{localStorage.removeItem('canadaJobs.jobs.v1');}catch(e){}
-  buildLinks();
-  // contact email assembled in script so it is not sitting in the page text
-  var ml=$('mailLink');ml.href='mailto:'+['pankajagarwal21','gmail.com'].join('@');
-  rebuild();refresh();
+  // contact email is assembled here so it is not sitting in the page text
+  $('mailLink').href='mailto:'+['pankajagarwal21','gmail.com'].join('@');
+  // profile popover
+  var radar=$('radar'),pop=$('pop');
+  function setPop(open){pop.hidden=!open;radar.setAttribute('aria-expanded',open?'true':'false');}
+  radar.onclick=function(e){e.stopPropagation();setPop(pop.hidden);};
+  document.addEventListener('click',function(e){if(!pop.hidden&&!pop.contains(e.target))setPop(false);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')setPop(false);});
+
+  rebuild();route();
+  window.addEventListener('hashchange',route);
   fetch('jobs.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){
-    fileJobs=extract(d).map(normalize).filter(Boolean);rebuild();refresh();
+    fileJobs=extract(d).map(normalize).filter(Boolean);rebuild();renderAll();
   }).catch(function(){});
-  $('resetData').onclick=function(){userJobs=[];save(K_USER,userJobs);rebuild();refresh();msg('Removed the jobs you uploaded.');};
+
+  $('resetData').onclick=function(){userJobs=[];save(K_USER,userJobs);rebuild();renderAll();msg('Removed the jobs you uploaded.');};
   var drop=$('drop'),file=$('file');
   drop.onclick=function(){file.click();};
   ['dragover','dragenter'].forEach(function(e){drop.addEventListener(e,function(ev){ev.preventDefault();drop.classList.add('over');});});
@@ -343,14 +427,14 @@ function init(){
   file.onchange=function(){if(file.files[0])readFile(file.files[0]);file.value='';};
   function readFile(f){var r=new FileReader();r.onload=function(){ingest(String(r.result),f.name);};r.readAsText(f);}
   $('loadPaste').onclick=function(){var t=$('paste').value.trim();if(!t){msg('Paste some JSON first.');return;}ingest(t,'paste.json');};
-  ['q','fRole','fProv','fCity','fArr','fSrc','fStatus','fDate','fSal'].forEach(function(id){$(id).addEventListener(id==='q'?'input':'change',render);});
-  $('clear').onclick=function(){['q','fRole','fProv','fCity','fArr','fSrc','fStatus','fDate'].forEach(function(id){$(id).value='';});$('fSal').value='0';render();};
+  ['q','fRole','fProv','fCity','fArr','fSrc','fStatus','fDate','fSal'].forEach(function(id){$(id).addEventListener(id==='q'?'input':'change',renderBoard);});
+  $('clear').onclick=function(){['q','fRole','fProv','fCity','fArr','fSrc','fStatus','fDate'].forEach(function(id){$(id).value='';});$('fSal').value='0';renderBoard();};
   $('export').onclick=exportCSV;
   $('list').addEventListener('click',function(ev){
     var b=ev.target.closest('button[data-i]');if(!b)return;
     var id=b.getAttribute('data-i'),t=b.getAttribute('data-t');
     if(tags[id]===t)delete tags[id];else tags[id]=t;
-    save(K_TAGS,tags);render();
+    save(K_TAGS,tags);renderBoard();
   });
 }
 init();

@@ -21,10 +21,14 @@ from pathlib import Path
 API = "https://jobicy.com/api/v2/remote-jobs"
 SOURCE = "Jobicy"
 KEYWORDS = ["project manager", "scrum master", "delivery manager",
-            "program manager", "product manager", "agile"]
+            "program manager", "product manager", "product owner", "agile",
+            "business analyst", "quality assurance", "qa engineer",
+            "test automation", "software tester"]
 TITLE_RE = re.compile(
     r"project (manager|lead|coordinator)|program manager|delivery (manager|lead)|"
-    r"scrum|agile|product (manager|owner)|technical program|release manager",
+    r"scrum|agile|product (manager|owner)|technical program|release manager|"
+    r"business (systems? )?analyst|\bqa\b|quality assurance|\btester\b|\bsdet\b|"
+    r"test(ing)? (engineer|analyst|automation|lead)|automation test|test automation",
     re.I,
 )
 GEO_OK_RE = re.compile(r"canada|anywhere|north america|americas", re.I)
