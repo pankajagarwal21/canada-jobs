@@ -1,434 +1,327 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f8f9fd">
-  <meta name="description" content="Pankaj Jobs: a Canada-focused job discovery and application tracking dashboard.">
-  <title>Pankaj Jobs | Discover your next opportunity in Canada</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-    :root { font-family:'DM Sans',system-ui,sans-serif; color:#202945; background:#f7f8fc; --navy:#182342; --muted:#77819a; --line:#e7eaf3; --purple:#6048ce; --purple-light:#f1eeff; --red:#ee525c; --green:#169d76; --shadow:0 12px 40px rgba(26,40,78,.055); }
-    * { box-sizing:border-box; }
-    body { margin:0; min-height:100vh; }
-    button,input,select,textarea { font:inherit; }
-    button { cursor:pointer; }
-    a { color:inherit; }
-    :focus-visible { outline:3px solid #9581fa; outline-offset:3px; }
-    .shell { display:grid; grid-template-columns:239px minmax(0,1fr); min-height:100vh; }
-    aside { background:#fff; border-right:1px solid var(--line); padding:31px 17px 21px; display:flex; flex-direction:column; gap:35px; position:sticky; top:0; height:100vh; overflow-y:auto; }
-    .brand { display:flex; align-items:center; gap:11px; padding:0 10px; text-decoration:none; }
-    .brand-symbol { width:37px; height:37px; display:grid; place-items:center; border-radius:13px; background:#ffecef; color:#e03e57; flex-shrink:0; }
-    .brand-name { font:800 18px/1.05 'Plus Jakarta Sans',sans-serif; color:var(--navy); letter-spacing:-.7px; }
-    .brand-name small { display:block; font-size:10px; text-transform:uppercase; color:#7d879f; letter-spacing:2.1px; margin-top:5px; }
-    .section-label { padding:0 12px; margin-bottom:10px; font-size:10px; font-weight:800; color:#a0a8bb; letter-spacing:1.8px; text-transform:uppercase; }
-    .sidebar-nav { display:grid; gap:4px; }
-    .nav-btn { width:100%; border:0; background:transparent; color:#7a849d; padding:12px 12px; text-align:left; border-radius:12px; display:flex; gap:12px; align-items:center; font-weight:700; font-size:13px; transition:.15s; }
-    .nav-btn:hover { background:#f7f6fe; color:var(--purple); }
-    .nav-btn.active { background:#efedff; color:var(--purple); }
-    .nav-btn svg { width:17px; height:17px; flex-shrink:0; }
-    .nav-count { margin-left:auto; background:#e5defd; border-radius:8px; padding:3px 7px; color:#664dd1; font-size:11px; }
-    .side-help { margin-top:auto; border-radius:17px; padding:18px 16px; background:linear-gradient(155deg,#28264c,#3e3374); color:#fff; }
-    .side-help .deco { width:34px; height:34px; background:#574c8f; display:grid; place-items:center; border-radius:10px; margin-bottom:14px; }
-    .side-help strong { font:800 14px/1.4 'Plus Jakarta Sans',sans-serif; display:block; }
-    .side-help p { color:#c3c0de; margin:6px 0 14px; font-size:12px; line-height:1.55; }
-    .side-help button { background:#fff; border:0; border-radius:9px; padding:10px 13px; font-size:11px; color:#322c58; font-weight:800; width:100%; }
-    .side-fine { font-size:10px; color:#a6aec0; padding:0 10px; line-height:1.6; }
-    main { min-width:0; }
-    .topbar { height:83px; display:flex; align-items:center; justify-content:space-between; gap:12px; padding:0 39px; border-bottom:1px solid var(--line); background:#fff; }
-    .crumb { font-weight:800; font-size:13px; color:var(--navy); }
-    .crumb span { font-weight:500; color:#a7acc0; margin:0 10px; }
-    .top-actions { display:flex; align-items:center; gap:10px; }
-    .top-date { color:#9099ad; font-size:12px; margin-right:8px; }
-    .soft-button,.primary-button,.outline-button { border:1px solid var(--line); border-radius:11px; padding:11px 15px; display:inline-flex; align-items:center; justify-content:center; gap:7px; font-size:12px; font-weight:800; white-space:nowrap; }
-    .soft-button { background:#fff; color:#535d77; }
-    .soft-button:hover,.outline-button:hover { border-color:#a89cf1; color:var(--purple); }
-    .primary-button { background:var(--purple); border-color:var(--purple); color:white; box-shadow:0 5px 15px rgba(96,72,206,.13); }
-    .primary-button:hover { background:#513bbd; }
-    .primary-button:disabled { opacity:.6; cursor:not-allowed; }
-    .outline-button { background:#fff; color:var(--purple); border-color:#c9c0ff; }
-    .content { max-width:1500px; padding:29px 39px 50px; margin:0 auto; }
-    .welcome { display:flex; justify-content:space-between; align-items:center; gap:18px; margin-bottom:24px; }
-    .eyebrow { color:var(--red); text-transform:uppercase; letter-spacing:2px; font-size:10px; font-weight:800; margin-bottom:8px; }
-    h1 { font:800 clamp(24px,3vw,31px)/1.22 'Plus Jakarta Sans',sans-serif; letter-spacing:-1.25px; margin:0 0 7px; color:var(--navy); }
-    .lead { color:#8790a7; font-size:13px; margin:0; }
-    .hero { background:linear-gradient(110deg,#282452 0%,#3c3280 58%,#6e51bc 100%); min-height:171px; border-radius:20px; color:#fff; display:flex; position:relative; overflow:hidden; margin-bottom:23px; box-shadow:var(--shadow); }
-    .hero-body { padding:28px 34px; max-width:650px; z-index:2; }
-    .hero-pill { display:inline-block; border:1px solid rgba(255,255,255,.25); background:rgba(255,255,255,.12); color:#e3dafb; border-radius:99px; padding:5px 10px; font-size:10px; font-weight:800; letter-spacing:.5px; margin-bottom:12px; }
-    .hero h2 { margin:0 0 8px; font:800 clamp(20px,2.3vw,26px)/1.22 'Plus Jakarta Sans',sans-serif; letter-spacing:-.7px; }
-    .hero p { margin:0; color:#d5cfee; font-size:12px; max-width:470px; line-height:1.65; }
-    .hero-art { position:absolute; right:10%; top:-36px; width:270px; height:270px; border:1px solid rgba(255,255,255,.12); border-radius:50%; }
-    .hero-art:before,.hero-art:after { content:""; border:1px solid rgba(255,255,255,.14); position:absolute; border-radius:50%; }
-    .hero-art:before { inset:28px; } .hero-art:after { inset:61px; }
-    .hero-maple { position:absolute; right:12%; top:19px; color:rgba(255,255,255,.18); transform:rotate(-15deg); }
-    .stats { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:15px; margin-bottom:25px; }
-    .stat { background:#fff; border:1px solid var(--line); box-shadow:var(--shadow); border-radius:16px; padding:16px 18px; text-align:left; display:flex; align-items:center; gap:13px; }
-    .stat:hover { border-color:#c5bdf1; }
-    .stat-icon { height:42px; width:42px; border-radius:12px; display:grid; place-items:center; flex-shrink:0; }
-    .stat-icon svg { width:20px; height:20px; }
-    .stat:nth-child(1) .stat-icon { color:#6248d9; background:#f0edff; } .stat:nth-child(2) .stat-icon { color:#e2a02a; background:#fff8e9; }
-    .stat:nth-child(3) .stat-icon { color:#219579; background:#e9f9f2; } .stat:nth-child(4) .stat-icon { color:#dd6389; background:#fff0f4; }
-    .stat-value { font:800 24px/1 'Plus Jakarta Sans',sans-serif; color:var(--navy); }
-    .stat-label { color:#929bb0; font-size:11px; font-weight:700; margin-top:6px; }
-    .panel { background:#fff; border:1px solid var(--line); border-radius:18px; padding:21px; box-shadow:var(--shadow); margin-bottom:20px; }
-    .panel-head { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:17px; flex-wrap:wrap; }
-    .panel-head h3,.section-head h3 { margin:0; font:800 16px/1.35 'Plus Jakarta Sans',sans-serif; letter-spacing:-.4px; }
-    .mini-info { font-size:11px; color:#9aa1b4; }
-    .filter-grid { display:grid; grid-template-columns:minmax(200px,2fr) repeat(3,minmax(125px,1fr)); gap:11px; }
-    .field { display:flex; flex-direction:column; gap:7px; min-width:0; }
-    .field label { font-size:11px; font-weight:800; color:#707b94; }
-    .field input,.field select,.field textarea { width:100%; border:1px solid #e3e7f1; border-radius:10px; padding:11px 12px; color:#3b4662; background:#fcfcff; outline:none; font-size:12px; min-width:0; }
-    .field input:focus,.field select:focus,.field textarea:focus { border-color:#8c75f0; box-shadow:0 0 0 3px rgba(113,81,223,.08); }
-    .filters-footer { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; padding-top:15px; }
-    .quick-tracks { display:flex; gap:6px; flex-wrap:wrap; align-items:center; }
-    .quick-tracks>span { color:#999fb2; font-size:10px; font-weight:700; margin-right:3px; }
-    .track { border:1px solid #e8e6f7; border-radius:30px; background:#f8f7ff; color:#6b60a5; padding:7px 11px; font-size:11px; font-weight:700; }
-    .track:hover { border-color:#b5a7ff; }
-    .filter-actions { display:flex; gap:8px; }
-    .plain-link { border:0; background:transparent; color:#7864ce; font-weight:800; font-size:11px; padding:8px; }
-    .section-head { display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; margin:25px 0 13px; }
-    .section-head small { color:#9aa2b7; font-weight:600; font-size:11px; display:block; margin-top:5px; }
-    .section-actions { display:flex; gap:8px; flex-wrap:wrap; }
-    .count-pill { background:#f0edfc; color:#6b55cd; border-radius:99px; font-size:11px; padding:6px 10px; font-weight:800; }
-    .notice { display:flex; align-items:center; gap:10px; color:#55617e; border:1px solid #dedff5; background:#f4f4ff; border-radius:12px; padding:12px 14px; font-size:11px; line-height:1.6; margin-bottom:12px; }
-    .notice strong { color:#5444a6; }
-    .notice.warning { border-color:#f5e4ba; background:#fff9ed; color:#84652d; }
-    .jobs { display:grid; gap:11px; }
-    .job-card { background:#fff; border:1px solid var(--line); border-radius:16px; display:grid; grid-template-columns:45px minmax(0,1fr) auto; gap:15px; padding:18px; align-items:start; transition:border-color .2s,box-shadow .2s; box-shadow:var(--shadow); }
-    .job-card:hover { border-color:#c9c3ef; box-shadow:0 12px 29px rgba(35,38,80,.085); }
-    .company-icon { height:43px; width:43px; border-radius:12px; display:grid; place-items:center; font:800 14px 'Plus Jakarta Sans',sans-serif; background:#f2efff; color:#6f53db; }
-    .job-card:nth-child(4n+2) .company-icon { background:#ffeef2; color:#e65b7e; } .job-card:nth-child(4n+3) .company-icon { background:#eaf8f3; color:#259b7c; }
-    .job-title { display:flex; align-items:center; gap:9px; flex-wrap:wrap; }
-    .job-title a,.job-title span { font:800 14px/1.45 'Plus Jakarta Sans',sans-serif; text-decoration:none; color:var(--navy); }
-    .job-title a:hover { color:#5f4ed2; }
-    .new-pill { font-size:9px; border-radius:6px; padding:3px 6px; font-weight:800; color:#d57337; background:#fff3e9; }
-    .job-meta { display:flex; gap:9px; align-items:center; flex-wrap:wrap; font-size:11px; color:#8993a9; margin:7px 0 9px; }
-    .job-meta strong { color:#56617a; font-weight:800; }
-    .dot { color:#c7ccda; }
-    .tags { display:flex; gap:6px; flex-wrap:wrap; }
-    .tag { background:#f6f6fb; border:1px solid #edeef6; border-radius:6px; padding:5px 8px; color:#78829a; font-size:10px; font-weight:700; }
-    .tag.green { background:#eef9f4; color:#249879; border-color:#dcf0e7; }
-    .tag.purple { background:#f2eeff; color:#7656dc; border-color:#e6dfff; }
-    .job-right { display:flex; flex-direction:column; align-items:flex-end; gap:9px; min-width:150px; }
-    .salary { font:800 13px/1.2 'Plus Jakarta Sans',sans-serif; color:#222c49; text-align:right; }
-    .post-date { color:#9aa2b4; font-size:10px; }
-    .job-controls { display:flex; align-items:center; gap:6px; margin-top:4px; }
-    .icon-button { display:grid; place-items:center; width:31px; height:31px; background:#fff; color:#898fa5; border:1px solid #e7e9f3; border-radius:9px; }
-    .icon-button svg { width:15px; height:15px; }
-    .icon-button:hover,.icon-button.selected { color:#6953d9; border-color:#cbbfff; background:#f4f1ff; }
-    .status-choice { border:1px solid #e5e8f3; color:#6f7990; background:#fafbff; font-size:11px; padding:7px 8px; border-radius:9px; max-width:112px; }
-    .apply { background:#f1eeff; color:#674fd0; text-decoration:none; border:1px solid #ede9ff; font-size:11px; padding:9px 12px; border-radius:9px; font-weight:800; white-space:nowrap; }
-    .apply:hover { background:#e6dfff; }
-    .apply.disabled { opacity:.5; pointer-events:none; }
-    .empty-state { background:white; border:1px dashed #dfe2ef; border-radius:16px; text-align:center; padding:44px 20px; }
-    .empty-illustration { height:55px; width:55px; border-radius:17px; background:#f1eeff; color:var(--purple); display:grid; place-items:center; margin:0 auto 15px; }
-    .empty-state h3 { font:800 16px 'Plus Jakarta Sans',sans-serif; margin:0 0 8px; color:var(--navy); }
-    .empty-state p { max-width:430px; margin:0 auto 17px; font-size:12px; color:#8d96ae; line-height:1.7; }
-    .source-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; }
-    .source-card { padding:17px; background:white; border:1px solid var(--line); border-radius:14px; text-decoration:none; min-height:114px; display:flex; flex-direction:column; justify-content:space-between; box-shadow:var(--shadow); }
-    .source-card:hover { border-color:#c4bafb; transform:translateY(-1px); }
-    .source-title { font:800 13px 'Plus Jakarta Sans',sans-serif; color:var(--navy); }
-    .source-sub { font-size:10px; line-height:1.55; color:#8a92a7; margin:6px 0 0; }
-    .source-bottom { font-size:10px; color:#6e56d2; font-weight:800; margin-top:14px; }
-    footer { margin-top:26px; border-top:1px solid #e6e8f0; padding-top:17px; color:#9aa2b7; font-size:10px; line-height:1.7; }
-    dialog { border:0; border-radius:19px; padding:0; width:min(590px,calc(100% - 30px)); box-shadow:0 30px 100px rgba(12,18,44,.25); }
-    dialog::backdrop { background:rgba(15,20,42,.55); backdrop-filter:blur(3px); }
-    .dialog-head { padding:23px 25px 17px; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; gap:16px; align-items:start; }
-    .dialog-head h2 { font:800 19px 'Plus Jakarta Sans',sans-serif; margin:0 0 6px; color:var(--navy); }
-    .dialog-head p { margin:0; color:#8891aa; font-size:12px; line-height:1.5; }
-    .dialog-body { padding:20px 25px 25px; }
-    .dialog-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:13px; }
-    .dialog-grid .full { grid-column:1/-1; }
-    .dialog-foot { display:flex; align-items:center; justify-content:flex-end; gap:9px; padding-top:18px; }
-    textarea { resize:vertical; }
-    .file-drop { display:block; border:1px dashed #bab3ed; border-radius:12px; background:#faf9ff; text-align:center; padding:20px; font-size:12px; color:#6853be; font-weight:800; cursor:pointer; }
-    .file-drop input { display:none; }
-    .file-drop span { display:block; font-size:11px; color:#9690b3; font-weight:500; margin-top:6px; }
-    .message { border-radius:9px; margin-top:10px; padding:10px 12px; color:#78551d; background:#fff7e7; font-size:11px; display:none; }
-    .toast { position:fixed; bottom:23px; right:24px; padding:13px 17px; border-radius:10px; z-index:100; background:#29315b; color:#fff; box-shadow:0 10px 30px #20294b35; font-size:12px; max-width:320px; display:none; }
-    .hidden { display:none!important; }
-    @media(max-width:1250px){.shell{grid-template-columns:205px 1fr}.content{padding:26px 26px 50px}.topbar{padding:0 26px}.source-grid{grid-template-columns:repeat(2,1fr)}.hero-maple{right:6%}.stats{gap:10px}.stat{padding:14px 11px}}
-    @media(max-width:930px){.shell{grid-template-columns:1fr}aside{position:relative; height:auto; padding:15px 20px; display:block; border-bottom:1px solid var(--line); border-right:0;}aside .sidebar-section,aside .side-help,aside .side-fine{display:none}.brand{padding:0}.topbar{height:66px}.top-date{display:none}.stats{grid-template-columns:repeat(2,1fr)}.filter-grid{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:630px){.content{padding:20px 14px 35px}.topbar{padding:0 14px}.top-actions .soft-button{display:none}.welcome{display:block}.welcome>.primary-button{margin-top:13px}.hero-body{padding:23px 21px}.hero-maple{right:-28px;opacity:.5}.hero-art{right:-85px}.hero p{max-width:310px}.stats{gap:9px}.stat{padding:12px 10px;gap:8px}.stat-icon{height:33px;width:33px}.stat-value{font-size:19px}.stat-label{font-size:10px}.panel{padding:16px}.filter-grid{grid-template-columns:1fr}.job-card{grid-template-columns:39px 1fr;gap:10px;padding:14px}.company-icon{width:39px;height:39px}.job-right{grid-column:2;align-items:flex-start;min-width:0;width:100%;margin-top:1px}.job-controls{width:100%;flex-wrap:wrap}.source-grid{grid-template-columns:repeat(2,1fr);gap:9px}.source-card{padding:13px}.section-actions .soft-button{padding:9px}.dialog-grid{grid-template-columns:1fr}.dialog-grid .full{grid-column:1}.dialog-head,.dialog-body{padding-left:18px;padding-right:18px}}
-    @media(prefers-reduced-motion:reduce){*{transition:none!important}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="robots" content="noindex, nofollow">
+<title>Canada Job Board</title>
+<style>
+:root{--bg:#0e1116;--panel:#161b22;--panel2:#1c232c;--line:#2a323d;--text:#e6edf3;--muted:#8b97a5;--accent:#e5484d;--accent2:#3fb68b;--warn:#e9b44c;--blue:#58a6ff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:1100px;margin:0 auto;padding:24px 16px 64px}
+header{display:flex;align-items:center;gap:14px;margin-bottom:6px}
+.logo{width:40px;height:40px;border-radius:10px;background:var(--accent);display:grid;place-items:center;font-weight:800;font-size:20px;color:#fff}
+h1{margin:0;font-size:24px}
+.sub{color:var(--muted);margin:2px 0 18px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.stat b{display:block;font-size:24px}
+.stat span{color:var(--muted);font-size:13px}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:14px}
+.drop{border:2px dashed var(--line);border-radius:10px;padding:18px;text-align:center;color:var(--muted);cursor:pointer}
+.drop.over{border-color:var(--accent);color:var(--text)}
+textarea{width:100%;min-height:70px;margin-top:10px;background:var(--panel2);color:var(--text);border:1px solid var(--line);border-radius:8px;padding:8px;font:12px ui-monospace,monospace}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+input[type=search],select{background:var(--panel2);color:var(--text);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font:inherit}
+input[type=search]{flex:1;min-width:200px}
+button,.btn{background:var(--panel2);color:var(--text);border:1px solid var(--line);border-radius:8px;padding:8px 12px;font:inherit;cursor:pointer;text-decoration:none;display:inline-block}
+button:hover,.btn:hover{border-color:var(--muted)}
+button.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.links a{font-size:13px}
+.count{color:var(--muted);margin:12px 2px}
+.job{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--line);border-radius:12px;padding:14px;margin-bottom:10px}
+.job.kept{border-left-color:var(--accent2)}
+.job.skipped{opacity:.5}
+.job h3{margin:0 0 2px;font-size:17px}
+.job h3 a{color:var(--text);text-decoration:none}
+.job h3 a:hover{color:var(--blue);text-decoration:underline}
+.meta{color:var(--muted);font-size:14px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.chip{font-size:12px;padding:2px 8px;border-radius:99px;background:var(--panel2);border:1px solid var(--line);color:var(--muted)}
+.chip.new{background:#3b1d1f;border-color:var(--accent);color:#ff9b9e}
+.chip.sal{color:var(--accent2);border-color:#1f5c47}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.empty{text-align:center;color:var(--muted);padding:40px 10px}
+.note{color:var(--muted);font-size:12px;margin-top:20px}
+@media(max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}}
+</style>
 </head>
 <body>
-<div class="shell">
-  <aside>
-    <a class="brand" href="#top" aria-label="Pankaj Jobs home">
-      <div class="brand-symbol"><svg width="25" height="25" viewBox="0 0 36 36" aria-hidden="true"><path fill="currentColor" d="M18 2 21 9l5-2-1 6 6 1-5 5 3 3-10 2 1 9h-4l1-9-10-2 3-3-5-5 6-1-1-6 5 2z"/></svg></div>
-      <div class="brand-name">Pankaj<small>JOBS · CANADA</small></div>
-    </a>
-    <div class="sidebar-section"><div class="section-label">WORKSPACE</div><nav class="sidebar-nav" aria-label="Job status">
-      <button class="nav-btn active" data-view="all"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> Discover jobs </button>
-      <button class="nav-btn" data-view="saved"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3h14v18l-7-5-7 5z"/></svg> Shortlisted <span class="nav-count" id="savedNav">0</span></button>
-      <button class="nav-btn" data-view="applied"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18"/></svg> Applications</button>
-      <button class="nav-btn" data-view="interview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="15" rx="2"/><path d="M8 3v4m8-4v4M3 11h18"/></svg> Interviews</button>
-      <button class="nav-btn" data-view="skipped"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l16 16M20 4 4 20"/></svg> Skipped</button>
-    </nav></div>
-    <div class="sidebar-section"><div class="section-label">YOUR TOOLS</div><nav class="sidebar-nav">
-      <button class="nav-btn" id="sideImport"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m-4-4 4 4 4-4M4 17v4h16v-4"/></svg> Import jobs</button>
-      <button class="nav-btn" id="sideExport"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4m-4 4 4-4 4 4M4 16v4h16v-4"/></svg> Export results</button>
-      <button class="nav-btn" id="sideSources"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c5 6 5 12 0 18M12 3c-5 6-5 12 0 18"/></svg> Job platforms</button>
-    </nav></div>
-    <div class="side-help"><div class="deco">✦</div><strong>Find your next move, not just your next job.</strong><p>Bring your listings together and keep every application organized.</p><button type="button" id="sideAdd">+ Add a job manually</button></div>
-    <div class="side-fine">Independent job tracking tool. Not affiliated with any employer or job platform.</div>
-  </aside>
-  <main id="top">
-    <div class="topbar"><div class="crumb">Your workspace <span>›</span> <strong>Job discovery</strong></div><div class="top-actions"><span class="top-date" id="todayDate"></span><button class="soft-button" type="button" id="headerImport">⇩ &nbsp; Import</button><button class="primary-button" type="button" id="headerAdd">+ &nbsp; Add Job</button></div></div>
-    <div class="content">
-      <div class="welcome"><div><div class="eyebrow">YOUR CANADIAN CAREER HUB</div><h1>Find work that moves you forward.</h1><p class="lead">Search smarter, track applications, and discover opportunities across Canada.</p></div><button class="primary-button" id="refreshBtn" type="button">↻ &nbsp; Refresh live jobs</button></div>
-      <section class="hero" aria-label="Welcome"><div class="hero-body"><span class="hero-pill">✦ BUILT FOR CANADIAN JOB SEEKERS</span><h2>One place. More possibilities.</h2><p>Explore live Canada-eligible remote jobs, import your own listings, and stay organized from first click to final interview.</p></div><div class="hero-art"></div><svg class="hero-maple" width="145" height="145" viewBox="0 0 36 36" aria-hidden="true"><path fill="currentColor" d="M18 2 21 9l5-2-1 6 6 1-5 5 3 3-10 2 1 9h-4l1-9-10-2 3-3-5-5 6-1-1-6 5 2z"/></svg></section>
-      <section class="stats" aria-label="Summary">
-        <button type="button" class="stat" data-stat="all"><span class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M7 9h10M7 13h10M7 17h6"/></svg></span><span><span class="stat-value" id="totalCount">0</span><span class="stat-label" style="display:block">Jobs available</span></span></button>
-        <button type="button" class="stat" data-stat="recent"><span class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l4 2"/></svg></span><span><span class="stat-value" id="recentCount">0</span><span class="stat-label" style="display:block">New this week</span></span></button>
-        <button type="button" class="stat" data-stat="saved"><span class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3h14v18l-7-5-7 5z"/></svg></span><span><span class="stat-value" id="savedCount">0</span><span class="stat-label" style="display:block">Shortlisted</span></span></button>
-        <button type="button" class="stat" data-stat="applied"><span class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg></span><span><span class="stat-value" id="appliedCount">0</span><span class="stat-label" style="display:block">Applications sent</span></span></button>
-      </section>
-      <section class="panel" id="searchPanel"><div class="panel-head"><h3>Find your opportunity</h3><span class="mini-info">Filter the jobs currently in your dashboard</span></div>
-        <div class="filter-grid">
-          <div class="field"><label for="search">Keywords or company</label><input id="search" type="search" placeholder="e.g. Project Manager, Scrum Master, RBC" autocomplete="off"></div>
-          <div class="field"><label for="province">Province / territory</label><select id="province"><option value="">All Canada</option><option>Ontario</option><option>Alberta</option><option>British Columbia</option><option>Quebec</option><option>Manitoba</option><option>Saskatchewan</option><option>Nova Scotia</option><option>New Brunswick</option><option>Newfoundland and Labrador</option><option>Prince Edward Island</option><option>Northwest Territories</option><option>Nunavut</option><option>Yukon</option></select></div>
-          <div class="field"><label for="arrangement">Work arrangement</label><select id="arrangement"><option value="">Any arrangement</option><option>Remote</option><option>Hybrid</option><option>On-site</option></select></div>
-          <div class="field"><label for="minSalary">Minimum salary (CAD)</label><select id="minSalary"><option value="0">Any salary</option><option value="60000">$60,000+</option><option value="80000">$80,000+</option><option value="100000">$100,000+</option><option value="120000">$120,000+</option><option value="150000">$150,000+</option></select></div>
-        </div>
-        <div class="filters-footer"><div class="quick-tracks"><span>POPULAR SEARCHES</span><button type="button" class="track" data-keyword="Project Manager">Project Manager</button><button type="button" class="track" data-keyword="Scrum Master">Scrum Master</button><button type="button" class="track" data-keyword="Project Coordinator">Project Coordinator</button><button type="button" class="track" data-keyword="Product Manager">Product Manager</button></div><div class="filter-actions"><button class="plain-link" type="button" id="resetFilters">Clear filters</button></div></div>
-      </section>
-      <section aria-labelledby="jobHeading" id="jobsSection"><div class="section-head"><div><h3 id="jobHeading">Latest opportunities <span class="count-pill" id="resultCount">0 results</span></h3><small id="sourceSubtitle">Checking for Canada-eligible remote positions…</small></div><div class="section-actions"><select class="status-choice" style="max-width:150px" id="ageFilter" aria-label="Filter by date"><option value="0">Any date</option><option value="3">Last 3 days</option><option value="7">Last 7 days</option><option value="30">Last 30 days</option></select><select class="status-choice" style="max-width:160px" id="sort" aria-label="Sort listings"><option value="newest">Newest first</option><option value="oldest">Oldest first</option><option value="company">Company A–Z</option></select><button class="soft-button" type="button" id="exportCsv">⇧ Export CSV</button></div></div>
-        <div class="notice" id="feedNotice"><span>◉</span><span><strong>Live remote feed:</strong> Canada-eligible remote listings come from Jobicy. On-site and hybrid jobs can be imported or added manually. Salary filters compare only stated CAD annual salaries.</span></div>
-        <div class="jobs" id="jobList" aria-live="polite"><div class="empty-state"><div class="empty-illustration">⌕</div><h3>Looking for opportunities…</h3><p>We're checking the live remote feed. You can import or add jobs whenever you like.</p></div></div>
-        <div style="text-align:center;margin-top:16px"><button class="soft-button hidden" type="button" id="showMore">Show more jobs</button></div>
-      </section>
-      <section id="sources"><div class="section-head"><div><h3>Search more jobs across Canada</h3><small>Open trusted platforms in a new tab. Their results are not automatically added to this dashboard.</small></div></div>
-        <div class="source-grid">
-          <a class="source-card" id="jobbankLink" href="https://www.jobbank.gc.ca/findajob" target="_blank" rel="noopener noreferrer"><div><div class="source-title">🇨🇦 &nbsp; Canada Job Bank</div><p class="source-sub">Official Canadian job search, including local employers and government resources.</p></div><span class="source-bottom">Visit Job Bank ↗</span></a>
-          <a class="source-card" id="linkedinLink" href="https://www.linkedin.com/jobs/" target="_blank" rel="noopener noreferrer"><div><div class="source-title">🔗 &nbsp; LinkedIn Jobs</div><p class="source-sub">Explore company opportunities and professional roles.</p></div><span class="source-bottom">Search LinkedIn ↗</span></a>
-          <a class="source-card" id="indeedLink" href="https://ca.indeed.com/" target="_blank" rel="noopener noreferrer"><div><div class="source-title">⌕ &nbsp; Indeed Canada</div><p class="source-sub">Search roles across Canadian cities, industries, and employers.</p></div><span class="source-bottom">Search Indeed ↗</span></a>
-          <a class="source-card" id="gcLink" href="https://www.canada.ca/en/services/jobs/opportunities/government.html" target="_blank" rel="noopener noreferrer"><div><div class="source-title">♧ &nbsp; Federal Government</div><p class="source-sub">Find Government of Canada employment and recruitment information.</p></div><span class="source-bottom">Explore careers ↗</span></a>
-        </div>
-      </section>
-      <footer>Pankaj Jobs is an independent job discovery and personal tracking prototype. Live remote listings are sourced from <a href="https://jobicy.com/" target="_blank" rel="noopener noreferrer">Jobicy</a> and link to their original posting pages. Listings are not guaranteed active; always verify eligibility and details with the employer. Your saved statuses and manual listings stay in this browser, not on a shared server. No automated applications or email alerts are provided.</footer>
+<div class="wrap">
+  <header><div class="logo">CA</div><div><h1>Canada job board</h1></div></header>
+  <p class="sub">Pull listings from LinkedIn, Indeed and other sources into one place, filter out the noise, and tag what's worth applying to.</p>
+
+  <div class="stats">
+    <div class="stat"><b id="sJobs">0</b><span>Jobs</span></div>
+    <div class="stat"><b id="sNew">0</b><span>New listing</span></div>
+    <div class="stat"><b id="sKept">0</b><span>Shortlisted</span></div>
+    <div class="stat"><b id="sSkip">0</b><span>Skipped</span></div>
+  </div>
+
+  <div class="box">
+    <div class="drop" id="drop">Drop a .json or .csv file here, or click to choose one<br><small>Works with this site's jobs.json and with LinkedIn / Indeed scraper output (merged_deduped.json or any single search file)</small></div>
+    <input type="file" id="file" accept=".json,.csv,application/json,text/csv" hidden>
+    <textarea id="paste" placeholder="Or paste JSON here…"></textarea>
+    <div class="row" style="margin-top:8px"><button id="loadPaste" class="primary">Load pasted JSON</button><button id="resetData">Reset to starter listings</button><span id="loadMsg" class="meta"></span></div>
+  </div>
+
+  <div class="box">
+    <div class="meta" style="margin-bottom:8px">Search on the source sites (opens in a new tab, past 7 days, Canada):</div>
+    <div class="row links" id="searchLinks"></div>
+  </div>
+
+  <div class="box">
+    <div class="row">
+      <input type="search" id="q" placeholder="Search title, company, location…">
+      <select id="fRole"><option value="">All roles</option></select>
+      <select id="fProv"><option value="">All provinces</option></select>
+      <select id="fCity"><option value="">All cities</option></select>
+      <select id="fArr"><option value="">Any arrangement</option><option>Remote</option><option>Hybrid</option><option>On-site</option></select>
+      <select id="fSrc"><option value="">All sources</option></select>
+      <select id="fStatus"><option value="">All statuses</option><option value="kept">Kept only</option><option value="skipped">Skipped only</option><option value="untagged">Untagged only</option></select>
+      <select id="fDate"><option value="">All time</option><option value="new">New listing</option><option value="1">Posted today</option><option value="3">Last 3 days</option><option value="7">Last 7 days</option><option value="14">Last 14 days</option><option value="30">Last 30 days</option></select>
+      <select id="fSal"><option value="0">Any salary</option><option value="60000">$60k+</option><option value="80000">$80k+</option><option value="100000">$100k+</option><option value="120000">$120k+</option></select>
+      <button id="clear">Clear filters</button>
+      <button id="export">Export CSV</button>
     </div>
-  </main>
+  </div>
+
+  <div class="count" id="count"></div>
+  <div id="list"></div>
+
+  <p class="note">Keep/Skip marks and loaded listings are saved only in this browser. Listings may be expired; always confirm on the original posting. Independent tool, not affiliated with LinkedIn, Indeed or any employer.</p>
 </div>
-<dialog id="addDialog"><form id="addForm"><div class="dialog-head"><div><h2>Add a job</h2><p>Save an opportunity you found elsewhere and track it here.</p></div><button type="button" class="icon-button" data-close="addDialog" aria-label="Close">✕</button></div><div class="dialog-body"><div class="dialog-grid">
-  <div class="field full"><label for="addTitle">Job title *</label><input id="addTitle" required maxlength="160" placeholder="Senior Project Manager"></div>
-  <div class="field"><label for="addCompany">Company *</label><input id="addCompany" required maxlength="120" placeholder="Company name"></div>
-  <div class="field"><label for="addLocation">City / location</label><input id="addLocation" maxlength="100" placeholder="Toronto, ON"></div>
-  <div class="field full"><label for="addUrl">Application URL (https://...) *</label><input id="addUrl" required type="url" pattern="https?://.*" placeholder="https://company.com/careers/..."></div>
-  <div class="field"><label for="addProvince">Province</label><select id="addProvince"><option value="">Not specified / Canada-wide</option></select></div>
-  <div class="field"><label for="addArrangement">Arrangement</label><select id="addArrangement"><option value="Unknown">Not specified</option><option>Remote</option><option>Hybrid</option><option>On-site</option></select></div>
-  <div class="field"><label for="addSalary">Minimum annual salary (CAD)</label><input id="addSalary" type="number" min="0" step="1000" placeholder="85000"></div>
-  <div class="field"><label for="addDate">Date posted</label><input id="addDate" type="date"></div>
-</div><div class="dialog-foot"><button type="button" class="soft-button" data-close="addDialog">Cancel</button><button type="submit" class="primary-button">Save opportunity</button></div></div></form></dialog>
-<dialog id="importDialog"><div class="dialog-head"><div><h2>Import job listings</h2><p>Merge JSON or CSV listings with your dashboard, including exports from the reference job board.</p></div><button type="button" class="icon-button" data-close="importDialog" aria-label="Close">✕</button></div><div class="dialog-body">
-  <label class="file-drop" for="importFile">⇩ &nbsp; Choose a .json or .csv file<input id="importFile" type="file" accept=".json,.csv,application/json,text/csv"><span>Also supports arrays and objects containing results, jobs, or data.</span></label>
-  <div class="field" style="margin-top:16px"><label for="pasteJson">Or paste JSON below</label><textarea id="pasteJson" rows="5" placeholder='[{"title":"Project Coordinator","company":"Example","location":"Ottawa, ON","url":"https://example.com/job"}]'></textarea></div>
-  <div class="message" id="importError" role="alert"></div>
-  <div class="dialog-foot"><button type="button" class="soft-button" data-close="importDialog">Cancel</button><button type="button" class="primary-button" id="importPasteBtn">Import pasted JSON</button></div>
-</div></dialog>
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
 <script>
-(() => {
-  'use strict';
-  const $ = id => document.getElementById(id);
-  const KEY = 'Pankaj:v1:';
-  const HOUR = 60 * 60 * 1000;
-  const statuses = ['new','saved','applied','interview','offer','skipped'];
-  const cities = {ON:'Ontario',BC:'British Columbia',AB:'Alberta',QC:'Quebec',MB:'Manitoba',SK:'Saskatchewan',NS:'Nova Scotia',NB:'New Brunswick',NL:'Newfoundland and Labrador',PE:'Prince Edward Island',NT:'Northwest Territories',NU:'Nunavut',YT:'Yukon'};
-  const escaped = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const httpUrl = value => {try { const u = new URL(String(value || '')); return ['http:','https:'].includes(u.protocol) && u.hostname && !u.username && !u.password ? u.href : ''; } catch{return '';} };
-  const storageRead = (key, fallback) => {try { const value = JSON.parse(localStorage.getItem(KEY + key) || 'null'); return value === null ? fallback : value; } catch{return fallback;} };
-  const storageWrite = (key, value) => {try{localStorage.setItem(KEY + key,JSON.stringify(value));return true;}catch{return false;}};
-  const asText = value => (Array.isArray(value) ? value.join(', ') : (value ?? '')).toString().trim();
-  const isoDate = d => {const dt = new Date(d);return Number.isFinite(dt.getTime()) ? dt.toISOString().slice(0,10) : '';};
-  const today = new Date().toISOString().slice(0,10);
-  const hashString = s => {let h=2166136261; for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619);}return (h>>>0).toString(36);};
-  const notify = s => {const node=$('toast');node.textContent=s;node.style.display='block';clearTimeout(notify.timer);notify.timer=setTimeout(()=>node.style.display='none',3500);};
-  const isFresh = (j,days=7) => {if(!j.date)return false;const t=new Date(j.date).getTime();return Number.isFinite(t) && t>=Date.now()-days*86400000 && t<=Date.now()+86400000;};
-  const extractProvince = (location, province) => {
-    const p=asText(province).toLowerCase(); const loc=asText(location).toLowerCase();
-    for(const [abbr,name] of Object.entries(cities)){
-      if(p===abbr.toLowerCase() || p===name.toLowerCase())return name;
-      if(loc.includes(name.toLowerCase()) || new RegExp('(?:^|[, /])'+abbr.toLowerCase()+'(?:$|[, /])').test(loc))return name;
-    }
-    return '';
-  };
-  const salaryLabel = j => {
-    if(!j.salaryMin && !j.salaryMax) return 'Salary not listed';
-    const money=n=>new Intl.NumberFormat('en-CA',{style:'currency',currency:j.currency||'CAD',maximumFractionDigits:0}).format(n);
-    const amount=j.salaryMin && j.salaryMax ? money(j.salaryMin)+' – '+money(j.salaryMax) : (j.salaryMin ? 'From '+money(j.salaryMin):'Up to '+money(j.salaryMax));
-    const period={yearly:' / year',monthly:' / month',weekly:' / week',daily:' / day',hourly:' / hour'}[j.period]||' (period unspecified)';
-    return amount+period;
-  };
-  // Normalize imports from the example job board, common CSV columns, and Jobicy.
-  function normalize(j,source='Imported'){
-    if(!j || typeof j!=='object')return null;
-    const title=asText(j.title ?? j.jobTitle ?? j.position ?? j.job_title).slice(0,200);
-    const company=asText(j.company ?? j.companyName ?? j.employer ?? j.organization).slice(0,180);
-    if(!title)return null;
-    const url=httpUrl(j.url ?? j.jobUrl ?? j.link ?? j.apply_url ?? j.application_url ?? '');
-    const location=asText(j.location ?? j.jobGeo ?? j.searched_city ?? j.city ?? 'Canada').slice(0,180);
-    let arrangement=asText(j.arrangement ?? j.work_arrangement ?? j.workType ?? '');
-    const join=[arrangement,location,j.remote].join(' ').toLowerCase();
-    arrangement=/hybrid/.test(join)?'Hybrid':/on.site|on site|onsite|in.person/.test(join)?'On-site':/remote|anywhere/.test(join)?'Remote':source==='Jobicy'?'Remote':'Unknown';
-    const rawCurrency=asText(j.currency ?? j.salaryCurrency ?? 'CAD').toUpperCase();
-    const currency=/^[A-Z]{3}$/.test(rawCurrency)?rawCurrency:'CAD';
-    const rawPeriod=asText(j.period ?? j.salaryPeriod ?? j.salary_period ?? (source==='Jobicy'?'unknown':'yearly')).toLowerCase();
-    const period=({annual:'yearly',year:'yearly',monthly:'monthly',week:'weekly',hour:'hourly',day:'daily'})[rawPeriod]||rawPeriod;
-    const salaryMin=Number(j.salaryMin ?? j.salary_min ?? j.min_salary ?? j.salary ?? 0)||0;
-    const salaryMax=Number(j.salaryMax ?? j.salary_max ?? j.max_salary ?? 0)||0;
-    const date=isoDate(j.date ?? j.pubDate ?? j.posted_at ?? j.date_posted ?? j.posted ?? j.first_seen ?? '');
-    const province=extractProvince(location,j.province ?? j.region ?? '');
-    const id=asText(j.id ?? j.jobId ?? j.job_id ?? j.jobSlug ?? '') || url || title+'|'+company+'|'+location;
-    return {id:source+':'+hashString(id),title,company:company||'Company not specified',url,location,province,arrangement,source, date,salaryMin:Math.max(0,salaryMin),salaryMax:Math.max(0,salaryMax),currency,period,statusHint:({'keep':'saved','skip':'skipped'}[j.status]|| (statuses.includes(j.status)?j.status:'')),roles:asText(j.roles ?? j.searched_role ?? j.jobIndustry ?? ''),type:asText(j.jobType ?? j.type ?? j.employment_type ?? ''),level:asText(j.jobLevel ?? j.level ?? '')};
+(function(){
+'use strict';
+var K_JOBS='canadaJobs.jobs.v1', K_TAGS='canadaJobs.tags.v1';
+var PROV={AB:'Alberta',BC:'British Columbia',MB:'Manitoba',NB:'New Brunswick',NL:'Newfoundland and Labrador',NS:'Nova Scotia',NT:'Northwest Territories',NU:'Nunavut',ON:'Ontario',PE:'Prince Edward Island',QC:'Quebec',SK:'Saskatchewan',YT:'Yukon'};
+var PROV_NAMES={};Object.keys(PROV).forEach(function(k){PROV_NAMES[PROV[k].toLowerCase()]=k;});
+PROV_NAMES['québec']='QC';PROV_NAMES['newfoundland']='NL';PROV_NAMES['prince edward island']='PE';
+var ROLES=[['Project Manager',/project manag|project lead|project coordinator/i],['Scrum Master / Agile',/scrum|agile/i],['Program Manager',/program manag/i],['Delivery Manager',/delivery manag|service delivery/i],['Product Manager',/product manag|product owner/i]];
+var jobs=[],tags={};
+var $=function(id){return document.getElementById(id);};
+
+function load(k,def){try{var v=JSON.parse(localStorage.getItem(k));return v==null?def:v;}catch(e){return def;}}
+function save(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+
+function pick(o,keys){for(var i=0;i<keys.length;i++){var v=o[keys[i]];if(v!=null&&v!=='')return v;}return '';}
+function toDate(v){
+  if(v==null||v==='')return null;
+  if(typeof v==='number'){return new Date(v<1e12?v*1000:v);}
+  var s=String(v).trim(), m;
+  if((m=s.match(/(\d+)\s*(minute|hour|day|week|month)s?\s*ago/i))){
+    var n=+m[1],u=m[2].toLowerCase(),ms={minute:6e4,hour:36e5,day:864e5,week:6048e5,month:2592e6}[u];
+    return new Date(Date.now()-n*ms);
   }
-  function normalizePayload(payload){
-    if(typeof payload==='string'){try{payload=JSON.parse(payload);}catch{throw Error('The pasted content is not valid JSON.');}}
-    const list=Array.isArray(payload)?payload: [payload?.results,payload?.jobs,payload?.data,payload?.items].find(Array.isArray);
-    if(!list)throw Error('Expected an array of jobs, or an object with a results, jobs, data, or items array.');
-    const out=list.map(j=>normalize(j)).filter(Boolean);
-    if(!out.length)throw Error('No valid job titles were found in this file.');
+  if(/^(today|just now)/i.test(s))return new Date();
+  if(/^yesterday/i.test(s))return new Date(Date.now()-864e5);
+  var d=new Date(s);return isNaN(d)?null:d;
+}
+function detectProv(loc){
+  if(!loc)return '';
+  var m=loc.match(/,\s*([A-Za-z]{2})\b/);
+  if(m&&PROV[m[1].toUpperCase()])return m[1].toUpperCase();
+  var l=loc.toLowerCase();
+  for(var n in PROV_NAMES){if(l.indexOf(n)>-1)return PROV_NAMES[n];}
+  return '';
+}
+function detectArr(raw,loc,title){
+  var a=String(pick(raw,['arrangement','work_arrangement','workplaceType','workplace_type','remote_option'])||'').toLowerCase();
+  if(raw.remote===true||raw.is_remote===true)a='remote';
+  var t=(a+' '+loc+' '+title).toLowerCase();
+  if(/hybrid/.test(t))return 'Hybrid';
+  if(/remote|work from home|wfh/.test(t))return 'Remote';
+  if(/on-?site|in-?office|in person/.test(t))return 'On-site';
+  return '';
+}
+function safeUrl(u){u=String(u||'').trim();return /^https?:\/\//i.test(u)?u:'';}
+function roleOf(t){for(var i=0;i<ROLES.length;i++){if(ROLES[i][1].test(t))return ROLES[i][0];}return 'Other';}
+function num(v){if(v==null||v==='')return null;var n=Number(String(v).replace(/[^0-9.]/g,''));return isFinite(n)&&n>0?n:null;}
+
+function normalize(raw){
+  if(!raw||typeof raw!=='object')return null;
+  var title=String(pick(raw,['title','job_title','jobTitle','position','name'])).trim();
+  var company=String(pick(raw,['company','companyName','company_name','employer','organization'])).trim();
+  if(!title)return null;
+  var loc=String(pick(raw,['location','job_location','jobLocation','city','place'])).trim();
+  var url=safeUrl(pick(raw,['url','link','job_url','jobUrl','apply_url','applyUrl','job_link','jobLink']));
+  var d=toDate(pick(raw,['posted','posted_at','postedAt','posted_date','postedDate','date_posted','datePosted','listed_at','listedAt','date','publishedAt','posted_time']));
+  var prov=String(raw.province||'').toUpperCase();
+  if(!PROV[prov])prov=detectProv(loc);
+  var city=loc.split(',')[0].trim();
+  if(/^remote$/i.test(city)||PROV[city.toUpperCase()]||/^canada$/i.test(city))city='';
+  var smin=num(pick(raw,['salary_min','salaryMin','min_salary']));
+  var smax=num(pick(raw,['salary_max','salaryMax','max_salary']));
+  var src=String(pick(raw,['source','site','platform'])||'').trim();
+  if(!src&&url){if(/linkedin\./i.test(url))src='LinkedIn';else if(/indeed\./i.test(url))src='Indeed';else if(/ziprecruiter\./i.test(url))src='ZipRecruiter';else if(/jobbank\.gc\.ca/i.test(url))src='Job Bank';}
+  var job={title:title,company:company,location:loc,city:city,province:prov,
+    arrangement:detectArr(raw,loc,title),job_type:String(pick(raw,['job_type','jobType','employment_type','type'])||'').trim(),
+    posted:d?d.toISOString().slice(0,10):'',salary_min:smin,salary_max:smax,url:url,source:src||'Other'};
+  job.role=roleOf(title);
+  job.id=(url||[title,company,loc].join('|')).toLowerCase();
+  return job;
+}
+function extract(data){
+  if(Array.isArray(data))return data;
+  if(data&&typeof data==='object'){
+    var ks=['results','jobs','data','items','listings'];
+    for(var i=0;i<ks.length;i++){if(Array.isArray(data[ks[i]]))return data[ks[i]];}
+    var out=[];Object.keys(data).forEach(function(k){if(Array.isArray(data[k]))out=out.concat(data[k]);});
     return out;
   }
-  function parseCSV(csv){
-    const rows=[];let row=[],value='',quoted=false;
-    for(let i=0;i<csv.length;i++){const c=csv[i];if(quoted){if(c==='"'&&csv[i+1]==='"'){value+='"';i++;}else if(c==='"'){quoted=false;}else{value+=c;}}else if(c==='"'){quoted=true;}else if(c===','){row.push(value);value='';}else if(c==='\n'||c==='\r'){if(c==='\r'&&csv[i+1]==='\n')i++;row.push(value);value='';if(row.some(x=>x.trim()))rows.push(row);row=[];}else{value+=c;}}
-    if(quoted)throw Error('CSV contains an unterminated quote.');
-    row.push(value);if(row.some(x=>x.trim()))rows.push(row);
-    if(rows.length<2)throw Error('CSV needs a header row and at least one job.');
-    const headers=rows.shift().map((h,i)=>i===0?h.replace(/^\uFEFF/,'').trim():h.trim());
-    return normalizePayload(rows.map(r=>Object.fromEntries(headers.map((h,i)=>[h,r[i]||'']))));
+  return [];
+}
+function parseCSV(text){
+  var rows=[],row=[],cur='',q=false;
+  for(var i=0;i<text.length;i++){
+    var c=text[i];
+    if(q){if(c=='"'){if(text[i+1]=='"'){cur+='"';i++;}else q=false;}else cur+=c;}
+    else if(c=='"')q=true;
+    else if(c==','){row.push(cur);cur='';}
+    else if(c=='\n'||c=='\r'){if(c=='\r'&&text[i+1]=='\n')i++;row.push(cur);cur='';if(row.length>1||row[0]!=='')rows.push(row);row=[];}
+    else cur+=c;
   }
-  let imported=storageRead('imported',[]);
-  let manual=storageRead('manual',[]);
-  let statusMap=storageRead('statuses',{});
-  let feed=storageRead('feed',[]);
-  let feedAt=storageRead('feedAt',0);
-  let feedMessage='';
-  let view='all',quickDate=false,shown=24;
-  let allJobs=[];let results=[];
-  const sameJob=(a,b)=>a.url && b.url && a.url===b.url;
-  function getJobs(){
-    const map=new Map();
-    [...manual,...imported,...feed].forEach(j=>{
-      if(!j?.id)return;
-      if([...map.values()].some(x=>sameJob(x,j)))return;
-      if(!map.has(j.id))map.set(j.id,j);
-    });
-     const allowedRoles = /\b(product manager|product owner|project manager|project coordinator|scrum master)\b/i;  allJobs = [...map.values()].filter(job =>   allowedRoles.test(job.title || '') );  return allJobs;
-  }
-  const getStatus=j=>statuses.includes(statusMap[j.id])?statusMap[j.id]:'new';
-  function setStatus(id,status){if(!statuses.includes(status))return;statusMap[id]=status;storageWrite('statuses',statusMap);render();notify('Job moved to '+(status==='saved'?'Shortlisted':status==='new'?'New':status)+'.');}
-  function setView(next){view=next;quickDate=false;document.querySelectorAll('.nav-btn[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===view));render();$('jobsSection').scrollIntoView({behavior:'smooth',block:'start'});}
-  function getFilter(){return {q:$('search').value.trim().toLowerCase(),province:$('province').value,arr:$('arrangement').value,min:Number($('minSalary').value)||0,days:Number($('ageFilter').value)||0};}
-  function render(){
-    getJobs();const f=getFilter();const stats={all:allJobs.length,recent:allJobs.filter(j=>isFresh(j)).length,saved:0,applied:0};
-    stats.saved=allJobs.filter(j=>getStatus(j)==='saved').length;
-    stats.applied=allJobs.filter(j=>['applied','interview','offer'].includes(getStatus(j))).length;
-    $('totalCount').textContent=stats.all;$('recentCount').textContent=stats.recent;$('savedCount').textContent=stats.saved;$('appliedCount').textContent=stats.applied;$('savedNav').textContent=stats.saved;
-    results=allJobs.filter(j=>{
-      const s=getStatus(j);
-      if(view==='all'&&s==='skipped')return false;
-      if(view==='saved'&&s!=='saved')return false;
-      if(view==='applied'&&!['applied','interview','offer'].includes(s))return false;
-      if(view==='interview'&&s!=='interview')return false;
-      if(view==='skipped'&&s!=='skipped')return false;
-      if(quickDate&&!isFresh(j))return false;
-      if(f.q && ![j.title,j.company,j.roles,j.location].join(' ').toLowerCase().includes(f.q))return false;
-      if(f.province && j.province!==f.province && !(j.arrangement==='Remote' && !j.province))return false;
-      if(f.arr && j.arrangement!==f.arr)return false;
-      // No inferred exchange rate: only salaries explicitly in CAD are comparable.
-      if(f.min && !(j.currency==='CAD' && j.period==='yearly' && j.salaryMin>=f.min))return false;
-      if(f.days && !isFresh(j,f.days))return false;
-      return true;
-    });
-    const sort=$('sort').value;results.sort((a,b)=>sort==='company'?a.company.localeCompare(b.company):sort==='oldest'?(a.date||'9999').localeCompare(b.date||'9999'):(b.date||'').localeCompare(a.date||''));
-    const labels={all:'Latest opportunities',saved:'Your shortlist',applied:'Your applications',interview:'Your interviews',skipped:'Skipped opportunities'};
-    $('jobHeading').firstChild.textContent=labels[view]+' ';
-    $('resultCount').textContent=results.length+' results';
-    $('sourceSubtitle').textContent=feedMessage || (feed.length ? 'Live Jobicy feed + any jobs you added or imported' : 'Import or add jobs to get started');
-    $('showMore').classList.toggle('hidden',results.length<=shown);
-    $('jobList').innerHTML=results.length?results.slice(0,shown).map(jobHTML).join(''):emptyHTML();
-    updateExternalLinks();
-  }
-  function jobHTML(j){
-    const s=getStatus(j);const isNew=isFresh(j,3);const letters=j.company.split(/\s+/).slice(0,2).map(x=>x[0]||'').join('').toUpperCase().slice(0,2)||'J';
-    const meta=[`<strong>${escaped(j.company)}</strong>`,escaped(j.location||'Canada'),j.source==='Jobicy'?'Source: Jobicy':escaped(j.source)].filter(Boolean).join('<span class="dot">•</span>');
-    const tags=[j.arrangement!=='Unknown'?j.arrangement:'',j.province||'',j.type?.split(',')[0]||'',j.roles?.split(',')[0]||''].filter(Boolean).slice(0,3);
-    const opts=[['new','New'],['saved','Shortlisted'],['applied','Applied'],['interview','Interview'],['offer','Offer'],['skipped','Skipped']].map(([v,l])=>`<option value="${v}" ${s===v?'selected':''}>${l}</option>`).join('');
-    const link=j.url?`<a href="${escaped(j.url)}" target="_blank" rel="noopener noreferrer" class="apply" aria-label="Open job listing for ${escaped(j.title)}">View job ↗</a>`:`<span class="apply disabled" title="No application URL supplied">No link</span>`;
-    return `<article class="job-card" data-id="${escaped(j.id)}"><div class="company-icon">${escaped(letters)}</div><div class="job-main"><div class="job-title">${j.url?`<a href="${escaped(j.url)}" target="_blank" rel="noopener noreferrer">${escaped(j.title)}</a>`:`<span>${escaped(j.title)}</span>`}${isNew?'<span class="new-pill">NEW</span>':''}</div><div class="job-meta">${meta}</div><div class="tags">${tags.map((x,i)=>`<span class="tag ${i===0?'green':''}">${escaped(x)}</span>`).join('')}${s==='saved'?'<span class="tag purple">★ Shortlisted</span>':''}</div></div><div class="job-right"><div class="salary">${escaped(salaryLabel(j))}</div><span class="post-date">${j.date?'Posted '+escaped(j.date):'Date not listed'}</span><div class="job-controls"><button type="button" data-save="${escaped(j.id)}" class="icon-button ${s==='saved'?'selected':''}" title="${s==='saved'?'Remove from shortlist':'Shortlist job'}" aria-label="${s==='saved'?'Remove shortlist':'Shortlist'} ${escaped(j.title)}"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7" fill="${s==='saved'?'currentColor':'none'}"><path d="M5 3h14v18l-7-5-7 5z"/></svg></button><select class="status-choice" data-status="${escaped(j.id)}" aria-label="Application status for ${escaped(j.title)}">${opts}</select>${link}</div></div></article>`;
-  }
-  function emptyHTML(){const isEmpty=allJobs.length===0;return `<div class="empty-state"><div class="empty-illustration"><svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></div><h3>${isEmpty?'Your board is ready for jobs':'No jobs match these filters'}</h3><p>${isEmpty?'Load live Canada-eligible remote opportunities, import a job-search file, or add your own application.':'Try clearing filters, switching views, or finding additional jobs on Canadian job platforms below.'}</p><button type="button" class="outline-button" id="emptyAction">${isEmpty?'Import jobs':'Clear filters'}</button></div>`;}
-  function updateExternalLinks(){
-    const q=$('search').value.trim(),loc=$('province').value||'Canada';
-    $('indeedLink').href='https://ca.indeed.com/jobs?q='+encodeURIComponent(q)+'&l='+encodeURIComponent(loc);
-    $('linkedinLink').href='https://www.linkedin.com/jobs/search/?keywords='+encodeURIComponent(q)+'&location='+encodeURIComponent(loc);
-  }
-  function mergeImported(list){
-    let count=0;const existing=new Set(imported.map(j=>j.id));const existingUrls=new Set([...manual,...imported].map(j=>j.url).filter(Boolean));
-    for(const j of list){if(!existing.has(j.id)&&!(j.url&&existingUrls.has(j.url))){imported.push(j);existing.add(j.id);if(j.url)existingUrls.add(j.url);if(j.statusHint)statusMap[j.id]=j.statusHint;count++;}}
-    if(!storageWrite('imported',imported))notify('Browser storage may be full; export your data for safekeeping.');
-    storageWrite('statuses',statusMap);
-    shown=24;setView('all');$('importDialog').close();notify(count+' job(s) imported. '+(list.length-count)+' duplicate(s) skipped.');
-  }
-  async function readImportFile(file){
-    if(!file)return;const msg=$('importError');msg.style.display='none';
-    try {const contents=await file.text();const jobs=/\.csv$/i.test(file.name)?parseCSV(contents):normalizePayload(JSON.parse(contents));mergeImported(jobs);}catch(e){msg.textContent=e.message||'Unable to read this file.';msg.style.display='block';}
-    $('importFile').value='';
-  }
-  async function refreshFeed(force=false){
-    const cached=feedAt && Date.now()-feedAt<HOUR;
-    if(cached){feedMessage='Live Canada-eligible remote jobs · cached '+new Date(feedAt).toLocaleTimeString('en-CA',{hour:'numeric',minute:'2-digit'});render();if(force)notify('Jobicy feed is limited to one refresh per hour. Showing cached results.');return;}
-    $('refreshBtn').disabled=true;$('refreshBtn').textContent='↻ Checking live jobs…';feedMessage='Fetching the latest Canada-eligible remote listings from Jobicy…';render();
-    try{
-      const response=await fetch('https://jobicy.com/api/jobs?count=200&geo=canada',{headers:{'Accept':'application/json'}});
-      if(!response.ok)throw Error('Remote feed returned HTTP '+response.status);
-      const data=await response.json();if(data.success===false)throw Error(data.error||'Remote feed request failed.');
-      if(!Array.isArray(data.jobs))throw Error('Remote feed returned an unexpected format.');
-      feed=data.jobs.map(j=>normalize(j,'Jobicy')).filter(Boolean);feedAt=Date.now();storageWrite('feed',feed);storageWrite('feedAt',feedAt);
-      feedMessage='Jobicy · Canada-eligible remote jobs posted within the last 7 days';
-      notify(feed.length+' live remote listing(s) loaded.');
-    }catch(e){feedMessage='Live feed unavailable — '+(feed.length?'showing previously cached jobs':'import your jobs or use the links below');notify('Live feed could not load. You can still import or track jobs.');console.warn('Jobicy feed:',e);}
-    finally{$('refreshBtn').disabled=false;$('refreshBtn').textContent='↻  Refresh live jobs';render();}
-  }
-  function csvDownload(){
-    const lines=[['title','company','location','province','arrangement','salary_min','salary_max','currency','period','date','source','status','url']];
-    results.forEach(j=>lines.push([j.title,j.company,j.location,j.province,j.arrangement,j.salaryMin,j.salaryMax,j.currency,j.period,j.date,j.source,getStatus(j),j.url]));
-    const csv=lines.map(row=>row.map(c=>'"'+String(c??'').replace(/"/g,'""')+'"').join(',')).join('\r\n');download(new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}),'Pankaj_canada_jobs.csv');notify('Exported '+results.length+' matching jobs.');
-  }
-  function download(blob,name){const u=URL.createObjectURL(blob);const a=document.createElement('a');a.href=u;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),2000);}
-  function exportJSON(){const payload=allJobs.map(j=>({...j,status:getStatus(j)}));download(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),'Pankaj_jobs_backup.json');notify('Exported a JSON backup.');}
-  document.querySelectorAll('.nav-btn[data-view]').forEach(b=>b.addEventListener('click',()=>setView(b.dataset.view)));
-  document.querySelectorAll('.stat').forEach(b=>b.addEventListener('click',()=>{if(b.dataset.stat==='recent'){view='all';quickDate=true;document.querySelectorAll('.nav-btn[data-view]').forEach(x=>x.classList.toggle('active',x.dataset.view==='all'));render();$('jobsSection').scrollIntoView({behavior:'smooth'});}else setView(b.dataset.stat);}));
-  for(const id of ['search','province','arrangement','minSalary','ageFilter','sort'])$(id).addEventListener(id==='search'?'input':'change',()=>{shown=24;render();});
-  document.querySelectorAll('.track').forEach(b=>b.addEventListener('click',()=>{$('search').value=b.dataset.keyword;shown=24;view='all';quickDate=false;render();$('jobsSection').scrollIntoView({behavior:'smooth'});}));
-  function clearFilters(){$('search').value='';$('province').value='';$('arrangement').value='';$('minSalary').value='0';$('ageFilter').value='0';quickDate=false;shown=24;render();}
-  $('resetFilters').addEventListener('click',clearFilters);
-  $('jobList').addEventListener('click',e=>{const save=e.target.closest('[data-save]');if(save){const id=save.dataset.save;const s=getStatus({id});setStatus(id,s==='saved'?'new':'saved');return;}if(e.target.closest('#emptyAction')){if(allJobs.length)clearFilters();else $('importDialog').showModal();}});
-  $('jobList').addEventListener('change',e=>{if(e.target.matches('[data-status]'))setStatus(e.target.dataset.status,e.target.value);});
-  $('showMore').addEventListener('click',()=>{shown+=24;render();});
-  $('exportCsv').addEventListener('click',csvDownload);$('sideExport').addEventListener('click',exportJSON);
-  ['headerImport','sideImport'].forEach(id=>$(id).addEventListener('click',()=>$('importDialog').showModal()));
-  ['headerAdd','sideAdd'].forEach(id=>$(id).addEventListener('click',()=>$('addDialog').showModal()));
-  $('sideSources').addEventListener('click',()=>$('sources').scrollIntoView({behavior:'smooth'}));
-  document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>$(b.dataset.close).close()));
-  document.querySelectorAll('dialog').forEach(d=>d.addEventListener('click',e=>{if(e.target===d)d.close();}));
-  $('refreshBtn').addEventListener('click',()=>refreshFeed(true));
-  $('importFile').addEventListener('change',e=>readImportFile(e.target.files?.[0]));
-  $('importPasteBtn').addEventListener('click',()=>{try{$('importError').style.display='none';mergeImported(normalizePayload($('pasteJson').value));$('pasteJson').value='';}catch(e){$('importError').textContent=e.message;$('importError').style.display='block';}});
-  $('addForm').addEventListener('submit',e=>{
-    e.preventDefault();const title=$('addTitle').value.trim(),company=$('addCompany').value.trim(),url=httpUrl($('addUrl').value);
-    if(!url){notify('Enter a valid http:// or https:// application URL.');return;}
-    const j=normalize({title,company,url,location:$('addLocation').value||'Canada',province:$('addProvince').value,arrangement:$('addArrangement').value,salaryMin:$('addSalary').value,currency:'CAD',date:$('addDate').value},'Manual');
-    if(allJobs.some(x=>sameJob(x,j))){notify('This job link is already on your board.');return;}
-    manual.unshift(j);storageWrite('manual',manual);$('addForm').reset();$('addDialog').close();setView('all');notify('Your job was added.');
+  if(cur!==''||row.length){row.push(cur);rows.push(row);}
+  if(rows.length<2)return [];
+  var h=rows[0].map(function(s){return s.trim();});
+  return rows.slice(1).map(function(r){var o={};h.forEach(function(k,i){o[k]=r[i];});return o;});
+}
+function merge(list){
+  var map={};jobs.forEach(function(j){map[j.id]=j;});
+  var added=0;
+  list.forEach(function(raw){var j=normalize(raw);if(!j)return;if(!map[j.id]){added++;}map[j.id]=j;});
+  jobs=Object.keys(map).map(function(k){return map[k];});
+  save(K_JOBS,jobs);
+  return added;
+}
+function msg(t){$('loadMsg').textContent=t;}
+
+function ingest(text,name){
+  var list;
+  try{
+    if(/\.csv$/i.test(name||'')||/^[^\[{]/.test(text.trim())){list=parseCSV(text);}
+    else list=extract(JSON.parse(text));
+  }catch(e){msg('Could not read that: '+e.message);return;}
+  var n=merge(list);msg('Loaded '+list.length+' rows, '+n+' new.');refresh();
+}
+
+function ageDays(j){if(!j.posted)return null;return Math.floor((Date.now()-new Date(j.posted+'T12:00:00').getTime())/864e5);}
+function isNew(j){var a=ageDays(j);return a!==null&&a<=3;}
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function money(n){return '$'+Math.round(n/1000)+'k';}
+
+function filtered(){
+  var q=$('q').value.trim().toLowerCase(),role=$('fRole').value,prov=$('fProv').value,city=$('fCity').value,arr=$('fArr').value,src=$('fSrc').value,st=$('fStatus').value,dt=$('fDate').value,sal=+$('fSal').value;
+  var out=jobs.filter(function(j){
+    var t=tags[j.id]||'';
+    if(q&&(j.title+' '+j.company+' '+j.location).toLowerCase().indexOf(q)<0)return false;
+    if(role&&j.role!==role)return false;
+    if(prov&&j.province!==prov)return false;
+    if(city&&j.city!==city)return false;
+    if(arr&&j.arrangement!==arr)return false;
+    if(src&&j.source!==src)return false;
+    if(st==='kept'&&t!=='kept')return false;
+    if(st==='skipped'&&t!=='skipped')return false;
+    if(st==='untagged'&&t)return false;
+    if(dt){var a=ageDays(j);if(dt==='new'){if(!isNew(j))return false;}else if(a===null||a>+dt)return false;}
+    if(sal){var top=j.salary_max||j.salary_min;if(!top||top<sal)return false;}
+    return true;
   });
-  $('addProvince').innerHTML='<option value="">Not specified / Canada-wide</option>'+Object.values(cities).map(p=>'<option>'+escaped(p)+'</option>').join('');
-  $('addDate').value=today;$('todayDate').textContent=new Date().toLocaleDateString('en-CA',{month:'long',day:'numeric',year:'numeric'});
-  getJobs();render();refreshFeed();
+  out.sort(function(a,b){return (b.posted||'').localeCompare(a.posted||'');});
+  return out;
+}
+function fillSelect(id,vals,label){
+  var el=$(id),cur=el.value;
+  el.innerHTML='<option value="">'+label+'</option>'+vals.map(function(v){var text=(id==='fProv'&&PROV[v])?PROV[v]:v;return '<option value="'+esc(v)+'">'+esc(text)+'</option>';}).join('');
+  el.value=vals.indexOf(cur)>-1?cur:'';
+}
+function uniq(f){var s={};jobs.forEach(function(j){if(j[f])s[j[f]]=1;});return Object.keys(s).sort();}
+
+function render(){
+  var list=filtered(),box=$('list');
+  var kept=0,skip=0,nw=0;
+  jobs.forEach(function(j){if(tags[j.id]==='kept')kept++;if(tags[j.id]==='skipped')skip++;if(isNew(j))nw++;});
+  $('sJobs').textContent=jobs.length;$('sNew').textContent=nw;$('sKept').textContent=kept;$('sSkip').textContent=skip;
+  $('count').textContent=list.length+' of '+jobs.length+' jobs';
+  if(!list.length){box.innerHTML='<div class="empty">'+(jobs.length?'No jobs match these filters.':'No jobs loaded yet. Upload or paste your scraped JSON above.')+'</div>';return;}
+  box.innerHTML=list.map(function(j,i){
+    var t=tags[j.id]||'',a=ageDays(j);
+    var chips=[];
+    if(isNew(j))chips.push('<span class="chip new">New</span>');
+    if(j.province)chips.push('<span class="chip">'+esc(PROV[j.province])+'</span>');
+    if(j.arrangement)chips.push('<span class="chip">'+esc(j.arrangement)+'</span>');
+    if(j.job_type)chips.push('<span class="chip">'+esc(j.job_type)+'</span>');
+    chips.push('<span class="chip">'+esc(j.role)+'</span>');
+    chips.push('<span class="chip">'+esc(j.source)+'</span>');
+    if(j.salary_min||j.salary_max){chips.push('<span class="chip sal">'+(j.salary_min&&j.salary_max?money(j.salary_min)+' – '+money(j.salary_max):money(j.salary_min||j.salary_max))+'</span>');}
+    var title=j.url?'<a href="'+esc(j.url)+'" target="_blank" rel="noopener noreferrer">'+esc(j.title)+'</a>':esc(j.title);
+    var when=a===null?'Date not listed':(a<=0?'Posted today':(a===1?'Posted 1 day ago':'Posted '+a+' days ago'));
+    return '<div class="job '+t+'"><h3>'+title+'</h3><div class="meta">'+esc(j.company||'Company not listed')+' · '+esc(j.location||'Canada')+' · '+when+'</div>'+
+      '<div class="chips">'+chips.join('')+'</div><div class="actions">'+
+      '<button data-i="'+esc(j.id)+'" data-t="kept">'+(t==='kept'?'✓ Shortlisted':'Shortlist')+'</button>'+
+      '<button data-i="'+esc(j.id)+'" data-t="skipped">'+(t==='skipped'?'Skipped (undo)':'Skip')+'</button>'+
+      (j.url?'<a class="btn" href="'+esc(j.url)+'" target="_blank" rel="noopener noreferrer">Open posting ↗</a>':'')+'</div></div>';
+  }).join('');
+}
+function refresh(){
+  fillSelect('fRole',ROLES.map(function(r){return r[0];}).concat(['Other']),'All roles');
+  fillSelect('fProv',uniq('province'),'All provinces');
+  fillSelect('fCity',uniq('city'),'All cities');
+  fillSelect('fSrc',uniq('source'),'All sources');
+  render();
+}
+
+function csvCell(v){v=v==null?'':String(v);if(/^[=+\-@]/.test(v))v="'"+v;return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v;}
+function exportCSV(){
+  var cols=['title','company','location','province','arrangement','job_type','posted','salary_min','salary_max','source','url'];
+  var lines=[cols.concat(['status']).join(',')];
+  filtered().forEach(function(j){lines.push(cols.map(function(c){return csvCell(j[c]);}).concat([csvCell(tags[j.id]||'')]).join(','));});
+  var blob=new Blob([lines.join('\n')],{type:'text/csv'}),a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);a.download='canada-jobs.csv';document.body.appendChild(a);a.click();a.remove();
+}
+
+function buildLinks(){
+  var kws=['Project Manager','Scrum Master','Delivery Manager','Program Manager','Product Manager'],h='';
+  kws.forEach(function(k){
+    h+='<a class="btn" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/jobs/search/?keywords='+encodeURIComponent(k)+'&location=Canada&f_TPR=r604800&sortBy=DD">LinkedIn: '+esc(k)+' ↗</a>';
+  });
+  h+='<a class="btn" target="_blank" rel="noopener noreferrer" href="https://ca.indeed.com/jobs?q=project+manager&fromage=7">Indeed Canada ↗</a>';
+  h+='<a class="btn" target="_blank" rel="noopener noreferrer" href="https://www.jobbank.gc.ca/findajob">Job Bank ↗</a>';
+  $('searchLinks').innerHTML=h;
+}
+
+function init(){
+  tags=load(K_TAGS,{});
+  jobs=load(K_JOBS,null);
+  buildLinks();
+  function seed(){
+    fetch('jobs.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){jobs=[];merge(extract(d));refresh();}).catch(function(){refresh();});
+  }
+  if(!jobs||!jobs.length){jobs=[];seed();}else refresh();
+  $('resetData').onclick=function(){jobs=[];save(K_JOBS,jobs);seed();msg('Reset to starter listings.');};
+  var drop=$('drop'),file=$('file');
+  drop.onclick=function(){file.click();};
+  ['dragover','dragenter'].forEach(function(e){drop.addEventListener(e,function(ev){ev.preventDefault();drop.classList.add('over');});});
+  ['dragleave','drop'].forEach(function(e){drop.addEventListener(e,function(ev){ev.preventDefault();drop.classList.remove('over');});});
+  drop.addEventListener('drop',function(ev){var f=ev.dataTransfer.files[0];if(f)readFile(f);});
+  file.onchange=function(){if(file.files[0])readFile(file.files[0]);file.value='';};
+  function readFile(f){var r=new FileReader();r.onload=function(){ingest(String(r.result),f.name);};r.readAsText(f);}
+  $('loadPaste').onclick=function(){var t=$('paste').value.trim();if(!t){msg('Paste some JSON first.');return;}ingest(t,'paste.json');};
+  ['q','fRole','fProv','fCity','fArr','fSrc','fStatus','fDate','fSal'].forEach(function(id){$(id).addEventListener(id==='q'?'input':'change',render);});
+  $('clear').onclick=function(){['q','fRole','fProv','fCity','fArr','fSrc','fStatus','fDate'].forEach(function(id){$(id).value='';});$('fSal').value='0';render();};
+  $('export').onclick=exportCSV;
+  $('list').addEventListener('click',function(ev){
+    var b=ev.target.closest('button[data-i]');if(!b)return;
+    var id=b.getAttribute('data-i'),t=b.getAttribute('data-t');
+    if(tags[id]===t)delete tags[id];else tags[id]=t;
+    save(K_TAGS,tags);render();
+  });
+}
+init();
 })();
 </script>
 </body>
