@@ -61,14 +61,21 @@ input[type=search]{flex:1;min-width:200px}
 .meta{color:var(--muted);font-size:14px}
 .count{color:var(--muted);margin:14px 2px}
 .job{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--line);border-radius:14px;padding:16px;margin-bottom:12px}
+.job.fresh{border-left-color:#f5b83d;background:linear-gradient(90deg,rgba(245,184,61,.10),var(--card) 55%)}
+.job.fresh .when{color:#f5b83d;font-weight:600}
 .job.kept{border-left-color:var(--good)}
+.pager{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;align-items:center;margin:20px 0 4px}
+.pager button{min-width:38px;padding:7px 11px}
+.pager button.cur{background:linear-gradient(135deg,var(--accent),var(--accent2));border-color:transparent;color:#fff;font-weight:600}
+.pager button:disabled{opacity:.4;cursor:default}
+.pager .gap{color:var(--muted);padding:0 4px}
 .job.skipped{opacity:.5}
 .job h3{margin:0 0 2px;font-size:18px}
 .job h3 a{text-decoration:none}
 .job h3 a:hover{color:var(--accent);text-decoration:underline}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
 .chip{font-size:12px;padding:2px 9px;border-radius:99px;background:var(--card2);border:1px solid var(--line);color:var(--muted)}
-.chip.new{background:#2a1d44;border-color:var(--accent2);color:#cdb6ff}
+.chip.new{background:#f5b83d;border-color:#f5b83d;color:#2a1d00;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
 .chip.sal{color:var(--good);border-color:#1f5c47}
 .actions{display:flex;gap:8px;flex-wrap:wrap}
 .empty{text-align:center;color:var(--muted);padding:40px 10px}
@@ -137,6 +144,7 @@ input[type=search]{flex:1;min-width:200px}
 
     <div class="count" id="count"></div>
     <div id="list"></div>
+    <div class="pager" id="pager"></div>
 
   </main>
 
@@ -172,7 +180,7 @@ var ROLES=[
   ['Delivery Manager','project-management',/delivery manag|service delivery/i],
   ['Other delivery roles','project-management',/delivery|program|project|release manager/i]
 ];
-var fileJobs=[],userJobs=[],jobs=[],tags={},cat=null;
+var fileJobs=[],userJobs=[],jobs=[],tags={},cat=null,page=1,PAGE_SIZE=30;
 var $=function(id){return document.getElementById(id);};
 
 function load(k,def){try{var v=JSON.parse(localStorage.getItem(k));return v==null?def:v;}catch(e){return def;}}
@@ -342,17 +350,21 @@ function renderBoard(){
   var kept=0,skip=0,nw=0;
   base.forEach(function(j){if(tags[j.id]==='kept')kept++;if(tags[j.id]==='skipped')skip++;if(isNew(j))nw++;});
   $('sJobs').textContent=base.length;$('sNew').textContent=nw;$('sKept').textContent=kept;$('sSkip').textContent=skip;
-  $('count').textContent=list.length+' of '+base.length+' jobs';
+  var pages=Math.max(1,Math.ceil(list.length/PAGE_SIZE));
+  if(page>pages)page=pages;if(page<1)page=1;
+  var from=(page-1)*PAGE_SIZE,shownList=list.slice(from,from+PAGE_SIZE);
+  $('count').textContent=list.length?('Showing '+(from+1)+'–'+(from+shownList.length)+' of '+list.length+(list.length!==base.length?' matching jobs ('+base.length+' total)':' jobs')):('0 of '+base.length+' jobs');
+  renderPager(pages);
   var stF=$('fStatus').value,dtF=$('fDate').value;
   [].forEach.call(document.querySelectorAll('.stat'),function(b){
     var f=b.getAttribute('data-f');
     b.classList.toggle('on',f==='new'?dtF==='new'&&!stF:f==='kept'?stF==='kept':f==='skipped'?stF==='skipped':!stF&&!dtF);
   });
   if(!list.length){box.innerHTML='<div class="empty">'+(base.length?'No jobs match these filters.':'No jobs listed yet for this profile. Check back soon.')+'</div>';return;}
-  box.innerHTML=list.map(function(j){
-    var t=tags[j.id]||'',a=ageDays(j);
+  box.innerHTML=shownList.map(function(j){
+    var t=tags[j.id]||'',a=ageDays(j),fresh=isNew(j);
     var chips=[];
-    if(isNew(j))chips.push('<span class="chip new">New</span>');
+    if(fresh)chips.push('<span class="chip new">New</span>');
     if(j.province)chips.push('<span class="chip">'+esc(PROV[j.province])+'</span>');
     if(j.arrangement)chips.push('<span class="chip">'+esc(j.arrangement)+'</span>');
     if(j.job_type)chips.push('<span class="chip">'+esc(j.job_type)+'</span>');
@@ -361,13 +373,23 @@ function renderBoard(){
     if(j.salary_min||j.salary_max){chips.push('<span class="chip sal">'+(j.salary_min&&j.salary_max?money(j.salary_min)+' – '+money(j.salary_max):money(j.salary_min||j.salary_max))+' CAD</span>');}
     var title=j.url?'<a href="'+esc(j.url)+'" target="_blank" rel="noopener noreferrer">'+esc(j.title)+'</a>':esc(j.title);
     var when=a===null?'Date not listed':(a<=0?'Posted today':(a===1?'Posted 1 day ago':'Posted '+a+' days ago'));
-    return '<div class="job '+t+'"><h3>'+title+'</h3><div class="meta">'+esc(j.company||'Company not listed')+' · '+esc(j.location||'Canada')+' · '+when+'</div>'+
+    return '<div class="job'+(fresh?' fresh':'')+(t?' '+t:'')+'"><h3>'+title+'</h3><div class="meta">'+esc(j.company||'Company not listed')+' · '+esc(j.location||'Canada')+' · <span class="when">'+when+'</span></div>'+
       '<div class="chips">'+chips.join('')+'</div><div class="actions">'+
       '<button class="'+(t==='kept'?'on-keep':'')+'" data-i="'+esc(j.id)+'" data-t="kept">'+(t==='kept'?'✓ Kept':'Keep')+'</button>'+
       '<button data-i="'+esc(j.id)+'" data-t="skipped">'+(t==='skipped'?'Skipped (undo)':'Skip')+'</button>'+
       (j.url?'<a class="btn" href="'+esc(j.url)+'" target="_blank" rel="noopener noreferrer">Open posting ↗</a>':'')+'</div></div>';
   }).join('');
 }
+function renderPager(pages){
+  var el=$('pager');
+  if(pages<=1){el.innerHTML='';return;}
+  var nums=[],i;
+  for(i=1;i<=pages;i++){if(i===1||i===pages||Math.abs(i-page)<=1)nums.push(i);else if(nums[nums.length-1]!=='…')nums.push('…');}
+  el.innerHTML='<button data-p="'+(page-1)+'"'+(page<=1?' disabled':'')+'>← Prev</button>'+
+    nums.map(function(n){return n==='…'?'<span class="gap">…</span>':'<button data-p="'+n+'"'+(n===page?' class="cur" aria-current="page"':'')+'>'+n+'</button>';}).join('')+
+    '<button data-p="'+(page+1)+'"'+(page>=pages?' disabled':'')+'>Next →</button>';
+}
+function firstPage(){page=1;renderBoard();}
 function renderAll(){if(cat)renderBoard();else renderPicker();}
 
 function route(){
@@ -379,6 +401,7 @@ function route(){
     $('catTitle').textContent=cat.name;$('catSub').textContent=cat.desc;
     ['q','fRole','fProv','fCity','fArr','fSrc','fStatus','fDate'].forEach(function(id){$(id).value='';});$('fSal').value='0';
   }
+  page=1;
   renderAll();
   window.scrollTo(0,0);
 }
@@ -411,17 +434,22 @@ function init(){
     fileJobs=extract(d).map(normalize).filter(Boolean);rebuild();renderAll();
   }).catch(function(){});
 
-  ['q','fRole','fProv','fCity','fArr','fSrc','fStatus','fDate','fSal'].forEach(function(id){$(id).addEventListener(id==='q'?'input':'change',renderBoard);});
+  ['q','fRole','fProv','fCity','fArr','fSrc','fStatus','fDate','fSal'].forEach(function(id){$(id).addEventListener(id==='q'?'input':'change',firstPage);});
+  $('pager').addEventListener('click',function(ev){
+    var b=ev.target.closest('button[data-p]');if(!b||b.disabled)return;
+    page=+b.getAttribute('data-p');renderBoard();
+    if($('count').scrollIntoView)$('count').scrollIntoView({behavior:'smooth',block:'start'});
+  });
   document.querySelector('.stats').addEventListener('click',function(ev){
     var b=ev.target.closest('.stat');if(!b)return;
     var f=b.getAttribute('data-f');
     ['q','fRole','fProv','fCity','fArr','fSrc','fStatus','fDate'].forEach(function(id){$(id).value='';});$('fSal').value='0';
     if(f==='new')$('fDate').value='new';
     else if(f==='kept'||f==='skipped')$('fStatus').value=f;
-    renderBoard();
+    firstPage();
     $('list').scrollIntoView&&$('count').scrollIntoView({behavior:'smooth',block:'nearest'});
   });
-  $('clear').onclick=function(){['q','fRole','fProv','fCity','fArr','fSrc','fStatus','fDate'].forEach(function(id){$(id).value='';});$('fSal').value='0';renderBoard();};
+  $('clear').onclick=function(){['q','fRole','fProv','fCity','fArr','fSrc','fStatus','fDate'].forEach(function(id){$(id).value='';});$('fSal').value='0';firstPage();};
   $('export').onclick=exportCSV;
   $('list').addEventListener('click',function(ev){
     var b=ev.target.closest('button[data-i]');if(!b)return;
