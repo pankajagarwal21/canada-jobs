@@ -118,11 +118,6 @@ input[type=search]{flex:1;min-width:200px}
     </div>
 
     <div class="box">
-      <div class="meta" style="margin-bottom:8px">Search on the source sites (opens in a new tab, past 7 days, Canada):</div>
-      <div class="row" id="searchLinks"></div>
-    </div>
-
-    <div class="box">
       <div class="row">
         <input type="search" id="q" placeholder="Search title, company, location…">
         <select id="fRole"><option value="">All roles</option></select>
@@ -376,7 +371,6 @@ function route(){
   document.title=cat?'Job Board - '+cat.name:'Job Board';
   if(cat){
     $('catTitle').textContent=cat.name;$('catSub').textContent=cat.desc;
-    buildLinks();
     ['q','fRole','fProv','fCity','fArr','fSrc','fStatus','fDate'].forEach(function(id){$(id).value='';});$('fSal').value='0';
   }
   renderAll();
