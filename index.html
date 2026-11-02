@@ -118,13 +118,6 @@ input[type=search]{flex:1;min-width:200px}
     </div>
 
     <div class="box">
-      <div class="drop" id="drop">Drop a .json or .csv file here, or click to choose one<br><small>merged_deduped.json, or any single search file (LinkedIn, Indeed and other scraper output works)</small></div>
-      <input type="file" id="file" accept=".json,.csv,application/json,text/csv" hidden>
-      <textarea id="paste" placeholder="Or paste JSON here…"></textarea>
-      <div class="row" style="margin-top:8px"><button id="loadPaste" class="primary">Load pasted JSON</button><button id="resetData">Remove my uploaded jobs</button><span id="loadMsg" class="meta"></span></div>
-    </div>
-
-    <div class="box">
       <div class="meta" style="margin-bottom:8px">Search on the source sites (opens in a new tab, past 7 days, Canada):</div>
       <div class="row" id="searchLinks"></div>
     </div>
@@ -354,7 +347,7 @@ function renderBoard(){
   base.forEach(function(j){if(tags[j.id]==='kept')kept++;if(tags[j.id]==='skipped')skip++;if(isNew(j))nw++;});
   $('sJobs').textContent=base.length;$('sNew').textContent=nw;$('sKept').textContent=kept;$('sSkip').textContent=skip;
   $('count').textContent=list.length+' of '+base.length+' jobs';
-  if(!list.length){box.innerHTML='<div class="empty">'+(base.length?'No jobs match these filters.':'No jobs loaded yet for this profile. Upload or paste your scraped JSON above.')+'</div>';return;}
+  if(!list.length){box.innerHTML='<div class="empty">'+(base.length?'No jobs match these filters.':'No jobs listed yet for this profile. Check back soon.')+'</div>';return;}
   box.innerHTML=list.map(function(j){
     var t=tags[j.id]||'',a=ageDays(j);
     var chips=[];
@@ -401,8 +394,8 @@ function exportCSV(){
 
 function init(){
   tags=load(K_TAGS,{});
-  userJobs=load(K_USER,[]);
-  try{localStorage.removeItem('canadaJobs.jobs.v1');}catch(e){}
+  userJobs=[];
+  try{localStorage.removeItem('canadaJobs.jobs.v1');localStorage.removeItem(K_USER);}catch(e){}
   // contact email is assembled here so it is not sitting in the page text
   $('mailLink').href='mailto:'+['pankajagarwal21','gmail.com'].join('@');
   // profile popover
@@ -418,15 +411,6 @@ function init(){
     fileJobs=extract(d).map(normalize).filter(Boolean);rebuild();renderAll();
   }).catch(function(){});
 
-  $('resetData').onclick=function(){userJobs=[];save(K_USER,userJobs);rebuild();renderAll();msg('Removed the jobs you uploaded.');};
-  var drop=$('drop'),file=$('file');
-  drop.onclick=function(){file.click();};
-  ['dragover','dragenter'].forEach(function(e){drop.addEventListener(e,function(ev){ev.preventDefault();drop.classList.add('over');});});
-  ['dragleave','drop'].forEach(function(e){drop.addEventListener(e,function(ev){ev.preventDefault();drop.classList.remove('over');});});
-  drop.addEventListener('drop',function(ev){var f=ev.dataTransfer.files[0];if(f)readFile(f);});
-  file.onchange=function(){if(file.files[0])readFile(file.files[0]);file.value='';};
-  function readFile(f){var r=new FileReader();r.onload=function(){ingest(String(r.result),f.name);};r.readAsText(f);}
-  $('loadPaste').onclick=function(){var t=$('paste').value.trim();if(!t){msg('Paste some JSON first.');return;}ingest(t,'paste.json');};
   ['q','fRole','fProv','fCity','fArr','fSrc','fStatus','fDate','fSal'].forEach(function(id){$(id).addEventListener(id==='q'?'input':'change',renderBoard);});
   $('clear').onclick=function(){['q','fRole','fProv','fCity','fArr','fSrc','fStatus','fDate'].forEach(function(id){$(id).value='';});$('fSal').value='0';renderBoard();};
   $('export').onclick=exportCSV;
