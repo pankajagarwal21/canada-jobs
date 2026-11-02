@@ -46,7 +46,9 @@ h1.big{font-size:26px;margin:22px 0 4px;letter-spacing:-.01em}
 .backrow h1{margin:0;font-size:26px}
 .sub{color:var(--muted);margin:0 0 6px}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0}
-.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;text-align:left;font:inherit;color:inherit;cursor:pointer;width:100%;display:block}
+.stat:hover{border-color:var(--accent)}
+.stat.on{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
 .stat b{display:block;font-size:26px}
 .stat span{color:var(--muted);font-size:13px}
 .box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px}
@@ -111,10 +113,10 @@ input[type=search]{flex:1;min-width:200px}
     <p class="sub">Connect with others looking for similar roles. <a class="btn wa" style="margin-left:6px" href="https://chat.whatsapp.com/GDxk7yQkrHt6cbmPWyyhoT?s=cl&amp;p=i&amp;mlu=4&amp;ilr=4&amp;iam=2" target="_blank" rel="noopener noreferrer">Join WhatsApp group</a></p>
 
     <div class="stats">
-      <div class="stat"><b id="sJobs">0</b><span>Jobs</span></div>
-      <div class="stat"><b id="sNew">0</b><span>New Listing</span></div>
-      <div class="stat"><b id="sKept">0</b><span>Shortlisted</span></div>
-      <div class="stat"><b id="sSkip">0</b><span>Skipped</span></div>
+      <button type="button" class="stat" data-f="all" title="Show all jobs"><b id="sJobs">0</b><span>Jobs</span></button>
+      <button type="button" class="stat" data-f="new" title="Show new listings"><b id="sNew">0</b><span>New Listing</span></button>
+      <button type="button" class="stat" data-f="kept" title="Show shortlisted jobs"><b id="sKept">0</b><span>Shortlisted</span></button>
+      <button type="button" class="stat" data-f="skipped" title="Show skipped jobs"><b id="sSkip">0</b><span>Skipped</span></button>
     </div>
 
     <div class="box">
@@ -341,6 +343,11 @@ function renderBoard(){
   base.forEach(function(j){if(tags[j.id]==='kept')kept++;if(tags[j.id]==='skipped')skip++;if(isNew(j))nw++;});
   $('sJobs').textContent=base.length;$('sNew').textContent=nw;$('sKept').textContent=kept;$('sSkip').textContent=skip;
   $('count').textContent=list.length+' of '+base.length+' jobs';
+  var stF=$('fStatus').value,dtF=$('fDate').value;
+  [].forEach.call(document.querySelectorAll('.stat'),function(b){
+    var f=b.getAttribute('data-f');
+    b.classList.toggle('on',f==='new'?dtF==='new'&&!stF:f==='kept'?stF==='kept':f==='skipped'?stF==='skipped':!stF&&!dtF);
+  });
   if(!list.length){box.innerHTML='<div class="empty">'+(base.length?'No jobs match these filters.':'No jobs listed yet for this profile. Check back soon.')+'</div>';return;}
   box.innerHTML=list.map(function(j){
     var t=tags[j.id]||'',a=ageDays(j);
@@ -405,6 +412,15 @@ function init(){
   }).catch(function(){});
 
   ['q','fRole','fProv','fCity','fArr','fSrc','fStatus','fDate','fSal'].forEach(function(id){$(id).addEventListener(id==='q'?'input':'change',renderBoard);});
+  document.querySelector('.stats').addEventListener('click',function(ev){
+    var b=ev.target.closest('.stat');if(!b)return;
+    var f=b.getAttribute('data-f');
+    ['q','fRole','fProv','fCity','fArr','fSrc','fStatus','fDate'].forEach(function(id){$(id).value='';});$('fSal').value='0';
+    if(f==='new')$('fDate').value='new';
+    else if(f==='kept'||f==='skipped')$('fStatus').value=f;
+    renderBoard();
+    $('list').scrollIntoView&&$('count').scrollIntoView({behavior:'smooth',block:'nearest'});
+  });
   $('clear').onclick=function(){['q','fRole','fProv','fCity','fArr','fSrc','fStatus','fDate'].forEach(function(id){$(id).value='';});$('fSal').value='0';renderBoard();};
   $('export').onclick=exportCSV;
   $('list').addEventListener('click',function(ev){
