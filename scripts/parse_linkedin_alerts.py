@@ -6,7 +6,7 @@ from email.utils import parsedate_to_datetime
 JOB_RE = re.compile(r"View job:\s*https://www\.linkedin\.com/comm/jobs/view/(\d+)", re.I)
 BADGES = re.compile(r"^(top applicant|actively (recruiting|hiring)|easy apply|promoted|new|\d+\s+(school alumni|connections?|company alumni)|.*(connection|alumni).*|be an early applicant|apply with .*|\$?CA\$.*)$", re.I)
 JUNK = re.compile(r"^(-{3,}|https?://.*|see all jobs.*|view jobs.*|manage alerts.*|your job alert.*|\d+\+? new jobs.*|jobs? you may be interested in.*)$", re.I)
-REL = re.compile(r"project|program|delivery|scrum|agile|product|business (systems? )?analyst|\\bqa\\b|quality assurance|test|portfolio manag|chef(fe)? de projet|gestionnaire de projet|analyste de projet|\\bsdet\\b", re.I)
+REL = re.compile(r"project|program|delivery|scrum|agile|product(?!ion)|business (systems? )?analyst|\\bqa\\b|quality assurance|test|portfolio manag|chef(fe)? de projet|gestionnaire de projet|analyste de projet|\\bsdet\\b", re.I)
 PROV = {"AB","BC","MB","NB","NL","NS","NT","NU","ON","PE","QC","SK","YT"}
 
 def clean(s):

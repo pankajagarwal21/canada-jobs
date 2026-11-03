@@ -7,7 +7,7 @@
 
 const REPO = "pankajagarwal21/canada-jobs";
 const FILE = "jobs.json";
-const REL = /project|program|delivery|scrum|agile|product|business (systems? )?analyst|\bqa\b|quality assurance|test|portfolio manag|chef(fe)? de projet|gestionnaire de projet|analyste de projet|\bsdet\b/i;
+const REL = /project|program|delivery|scrum|agile|product(?!ion)|business (systems? )?analyst|\bqa\b|quality assurance|test|portfolio manag|chef(fe)? de projet|gestionnaire de projet|analyste de projet|\bsdet\b/i;
 const PROV = new Set(["AB","BC","MB","NB","NL","NS","NT","NU","ON","PE","QC","SK","YT"]);
 const JUNK = /^(-{3,}|https?:\/\/.*|see all jobs.*|view jobs.*|manage alerts.*|your job alert.*|\d+\+? new jobs.*|jobs? you may be interested in.*)$/i;
 const BADGE = /^(top applicant|actively (recruiting|hiring)|easy apply|promoted|new|.*(connection|alumni).*|be an early applicant|apply with .*|\$?CA\$.*)$/i;
