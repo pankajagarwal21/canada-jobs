@@ -3,7 +3,7 @@
 
 - Listings from other sources already in jobs.json (Indeed, ZipRecruiter, ...) are kept.
 - Previous Jobicy listings are replaced by the fresh fetch, so closed ones drop off.
-- Any listing posted more than MAX_AGE_DAYS ago is removed.
+- Any listing posted more than MAX_AGE_DAYS (21) days ago is removed.
 - If the API cannot be reached, the file is left untouched and the script exits with an error.
 
 Jobicy asks integrators to poll at most hourly and to keep the original Jobicy URL
@@ -32,7 +32,7 @@ TITLE_RE = re.compile(
     re.I,
 )
 GEO_OK_RE = re.compile(r"canada|anywhere|north america|americas", re.I)
-MAX_AGE_DAYS = 60
+MAX_AGE_DAYS = 21
 UA = "canada-jobs-board/1.0 (+https://pankajagarwal21.github.io/canada-jobs/)"
 JOBS_FILE = Path(__file__).resolve().parent.parent / "jobs.json"
 
