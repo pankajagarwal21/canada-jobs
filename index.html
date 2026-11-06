@@ -133,7 +133,6 @@ input[type=search]{flex:1;min-width:200px}
         <select id="fProv"><option value="">All provinces</option></select>
         <select id="fCity"><option value="">All cities</option></select>
         <select id="fArr"><option value="">Any arrangement</option><option>Remote</option><option>Hybrid</option><option>On-site</option></select>
-        <select id="fSrc"><option value="">All sources</option></select>
         <select id="fStatus"><option value="">All statuses</option><option value="kept">Kept only</option><option value="skipped">Skipped only</option><option value="untagged">Untagged only</option></select>
         <select id="fDate"><option value="">All time</option><option value="new">New Listing</option><option value="1">Posted today</option><option value="3">Last 3 days</option><option value="7">Last 7 days</option><option value="14">Last 14 days</option><option value="30">Last 30 days</option></select>
         <select id="fSal"><option value="0">Any salary</option><option value="60000">$60k+</option><option value="80000">$80k+</option><option value="100000">$100k+</option><option value="120000">$120k+</option></select>
@@ -299,7 +298,7 @@ function money(n){return '$'+Math.round(n/1000)+'k';}
 function inCat(){return jobs.filter(function(j){return j.cat===cat.id;});}
 
 function filtered(){
-  var q=$('q').value.trim().toLowerCase(),role=$('fRole').value,prov=$('fProv').value,city=$('fCity').value,arr=$('fArr').value,src=$('fSrc').value,st=$('fStatus').value,dt=$('fDate').value,sal=+$('fSal').value;
+  var q=$('q').value.trim().toLowerCase(),role=$('fRole').value,prov=$('fProv').value,city=$('fCity').value,arr=$('fArr').value,st=$('fStatus').value,dt=$('fDate').value,sal=+$('fSal').value;
   var out=inCat().filter(function(j){
     var t=tags[j.id]||'';
     if(q&&(j.title+' '+j.company+' '+j.location).toLowerCase().indexOf(q)<0)return false;
@@ -307,7 +306,6 @@ function filtered(){
     if(prov&&j.province!==prov)return false;
     if(city&&j.city!==city)return false;
     if(arr&&j.arrangement!==arr)return false;
-    if(src&&j.source!==src)return false;
     if(st==='kept'&&t!=='kept')return false;
     if(st==='skipped'&&t!=='skipped')return false;
     if(st==='untagged'&&t)return false;
@@ -345,7 +343,6 @@ function renderBoard(){
   fillSelect('fRole',ROLES.filter(function(r){return r[1]===cat.id;}).map(function(r){return r[0];}),'All roles');
   fillSelect('fProv',uniq(base,'province'),'All provinces');
   fillSelect('fCity',uniq(base,'city'),'All cities');
-  fillSelect('fSrc',uniq(base,'source'),'All sources');
   list=filtered();
   var kept=0,skip=0,nw=0;
   base.forEach(function(j){if(tags[j.id]==='kept')kept++;if(tags[j.id]==='skipped')skip++;if(isNew(j))nw++;});
@@ -369,7 +366,7 @@ function renderBoard(){
     if(j.arrangement)chips.push('<span class="chip">'+esc(j.arrangement)+'</span>');
     if(j.job_type)chips.push('<span class="chip">'+esc(j.job_type)+'</span>');
     chips.push('<span class="chip">'+esc(j.role)+'</span>');
-    chips.push('<span class="chip">'+esc(j.source)+'</span>');
+    if(j.source==='Jobicy')chips.push('<span class="chip">Jobicy</span>');
     if(j.salary_min||j.salary_max){chips.push('<span class="chip sal">'+(j.salary_min&&j.salary_max?money(j.salary_min)+' – '+money(j.salary_max):money(j.salary_min||j.salary_max))+' CAD</span>');}
     var title=j.url?'<a href="'+esc(j.url)+'" target="_blank" rel="noopener noreferrer">'+esc(j.title)+'</a>':esc(j.title);
     var when=a===null?'Date not listed':(a<=0?'Posted today':(a===1?'Posted 1 day ago':'Posted '+a+' days ago'));
@@ -399,7 +396,7 @@ function route(){
   document.title=cat?'Job Board - '+cat.name:'Job Board';
   if(cat){
     $('catTitle').textContent=cat.name;$('catSub').textContent=cat.desc;
-    ['q','fRole','fProv','fCity','fArr','fSrc','fStatus','fDate'].forEach(function(id){$(id).value='';});$('fSal').value='0';
+    ['q','fRole','fProv','fCity','fArr','fStatus','fDate'].forEach(function(id){$(id).value='';});$('fSal').value='0';
   }
   page=1;
   renderAll();
@@ -408,7 +405,7 @@ function route(){
 
 function csvCell(v){v=v==null?'':String(v);if(/^[=+\-@]/.test(v))v="'"+v;return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v;}
 function exportCSV(){
-  var cols=['title','company','location','province','arrangement','job_type','posted','salary_min','salary_max','source','url'];
+  var cols=['title','company','location','province','arrangement','job_type','posted','salary_min','salary_max','url'];
   var lines=[cols.concat(['status']).join(',')];
   filtered().forEach(function(j){lines.push(cols.map(function(c){return csvCell(j[c]);}).concat([csvCell(tags[j.id]||'')]).join(','));});
   var blob=new Blob([lines.join('\n')],{type:'text/csv'}),a=document.createElement('a');
@@ -434,7 +431,7 @@ function init(){
     fileJobs=extract(d).map(normalize).filter(Boolean);rebuild();renderAll();
   }).catch(function(){});
 
-  ['q','fRole','fProv','fCity','fArr','fSrc','fStatus','fDate','fSal'].forEach(function(id){$(id).addEventListener(id==='q'?'input':'change',firstPage);});
+  ['q','fRole','fProv','fCity','fArr','fStatus','fDate','fSal'].forEach(function(id){$(id).addEventListener(id==='q'?'input':'change',firstPage);});
   $('pager').addEventListener('click',function(ev){
     var b=ev.target.closest('button[data-p]');if(!b||b.disabled)return;
     page=+b.getAttribute('data-p');renderBoard();
@@ -443,13 +440,13 @@ function init(){
   document.querySelector('.stats').addEventListener('click',function(ev){
     var b=ev.target.closest('.stat');if(!b)return;
     var f=b.getAttribute('data-f');
-    ['q','fRole','fProv','fCity','fArr','fSrc','fStatus','fDate'].forEach(function(id){$(id).value='';});$('fSal').value='0';
+    ['q','fRole','fProv','fCity','fArr','fStatus','fDate'].forEach(function(id){$(id).value='';});$('fSal').value='0';
     if(f==='new')$('fDate').value='new';
     else if(f==='kept'||f==='skipped')$('fStatus').value=f;
     firstPage();
     $('list').scrollIntoView&&$('count').scrollIntoView({behavior:'smooth',block:'nearest'});
   });
-  $('clear').onclick=function(){['q','fRole','fProv','fCity','fArr','fSrc','fStatus','fDate'].forEach(function(id){$(id).value='';});$('fSal').value='0';firstPage();};
+  $('clear').onclick=function(){['q','fRole','fProv','fCity','fArr','fStatus','fDate'].forEach(function(id){$(id).value='';});$('fSal').value='0';firstPage();};
   $('export').onclick=exportCSV;
   $('list').addEventListener('click',function(ev){
     var b=ev.target.closest('button[data-i]');if(!b)return;
