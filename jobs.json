@@ -1,14 +1,27 @@
 [
  {
-  "title": "Senior Product Manager - Special Projects",
-  "company": "Tremendous",
-  "location": "Remote (Canada,  USA)",
+  "title": "Junior Project Manager",
+  "company": "Canonical",
+  "location": "Remote (APAC,  LATAM,  Canada,  USA)",
   "province": "",
   "arrangement": "Remote",
   "job_type": "Full Time",
-  "posted": "2026-11-11",
-  "url": "https://jobicy.com/jobs/152866-senior-product-manager-special-projects",
+  "posted": "2026-11-12",
+  "url": "https://jobicy.com/jobs/150369-junior-project-manager",
   "source": "Jobicy"
+ },
+ {
+  "title": "GTM Program Manager",
+  "company": "Dropbox",
+  "location": "Remote (Canada)",
+  "province": "",
+  "arrangement": "Remote",
+  "job_type": "Full Time",
+  "posted": "2026-11-12",
+  "url": "https://jobicy.com/jobs/161534-gtm-program-manager",
+  "source": "Jobicy",
+  "salary_min": 103700,
+  "salary_max": 140300
  },
  {
   "title": "Project Manager",
@@ -141,6 +154,17 @@
   "posted": "2026-11-11",
   "url": "https://www.linkedin.com/jobs/view/4487975161/",
   "source": "LinkedIn"
+ },
+ {
+  "title": "Senior Product Manager - Special Projects",
+  "company": "Tremendous",
+  "location": "Remote (Canada,  USA)",
+  "province": "",
+  "arrangement": "Remote",
+  "job_type": "Full Time",
+  "posted": "2026-11-11",
+  "url": "https://jobicy.com/jobs/152866-senior-product-manager-special-projects",
+  "source": "Jobicy"
  },
  {
   "title": "IT Project Manager",
@@ -297,17 +321,6 @@
   "source": "LinkedIn"
  },
  {
-  "title": "Public Cloud Project Manager",
-  "company": "Canonical",
-  "location": "Remote (LATAM,  Canada,  USA)",
-  "province": "",
-  "arrangement": "Remote",
-  "job_type": "Full Time",
-  "posted": "2026-11-10",
-  "url": "https://jobicy.com/jobs/161107-public-cloud-project-manager",
-  "source": "Jobicy"
- },
- {
   "title": "Project Manager, Technology",
   "company": "Ontario Medical Association",
   "location": "Toronto, ON",
@@ -328,6 +341,17 @@
   "posted": "2026-11-10",
   "url": "https://to.indeed.com/aag7rvph4pmw",
   "source": "Indeed"
+ },
+ {
+  "title": "Public Cloud Project Manager",
+  "company": "Canonical",
+  "location": "Remote (LATAM,  Canada,  USA)",
+  "province": "",
+  "arrangement": "Remote",
+  "job_type": "Full Time",
+  "posted": "2026-11-10",
+  "url": "https://jobicy.com/jobs/161107-public-cloud-project-manager",
+  "source": "Jobicy"
  },
  {
   "title": "Agile Process Specialist, Investly",
@@ -1307,39 +1331,6 @@
   "posted": "2026-11-05",
   "url": "https://www.linkedin.com/jobs/view/4476903266/",
   "source": "LinkedIn"
- },
- {
-  "title": "Senior Product Manager, Analytics Features",
-  "company": "RevenueCat",
-  "location": "Remote (EMEA,  Canada,  USA)",
-  "province": "",
-  "arrangement": "Remote",
-  "job_type": "Full Time",
-  "posted": "2026-11-05",
-  "url": "https://jobicy.com/jobs/154650-senior-product-manager-analytics-features",
-  "source": "Jobicy"
- },
- {
-  "title": "QA Tester (Future Roles)",
-  "company": "Testlio",
-  "location": "Remote (Anywhere)",
-  "province": "",
-  "arrangement": "Remote",
-  "job_type": "Contract",
-  "posted": "2026-11-05",
-  "url": "https://jobicy.com/jobs/152401-qa-tester-future-roles",
-  "source": "Jobicy"
- },
- {
-  "title": "External Contractor - Mentor role for Data Product Manager track",
-  "company": "Udacity",
-  "location": "Remote (Anywhere)",
-  "province": "",
-  "arrangement": "Remote",
-  "job_type": "Contract",
-  "posted": "2026-11-05",
-  "url": "https://jobicy.com/jobs/154527-external-contractor-mentor-role-for-data-product-manager-track",
-  "source": "Jobicy"
  },
  {
   "title": "Technology Project Manager",
@@ -2960,50 +2951,6 @@
   "job_type": "",
   "posted": "2026-10-22",
   "url": "https://to.indeed.com/aawfrvglh4h6",
-  "source": "Indeed"
- },
- {
-  "title": "Project Management II",
-  "company": "Accenture",
-  "location": "Toronto, ON",
-  "province": "ON",
-  "arrangement": "",
-  "job_type": "",
-  "posted": "2026-10-21",
-  "url": "https://www.linkedin.com/jobs/view/4480493539/",
-  "source": "LinkedIn"
- },
- {
-  "title": "Project Engineering Coordinator",
-  "company": "AtkinsRéalis",
-  "location": "Toronto, ON",
-  "province": "ON",
-  "arrangement": "",
-  "job_type": "",
-  "posted": "2026-10-21",
-  "url": "https://www.linkedin.com/jobs/view/4481248416/",
-  "source": "LinkedIn"
- },
- {
-  "title": "Project Coordinator",
-  "company": "Polaron Energy",
-  "location": "North York, ON",
-  "province": "ON",
-  "arrangement": "",
-  "job_type": "",
-  "posted": "2026-10-21",
-  "url": "https://www.linkedin.com/jobs/view/4481278365/",
-  "source": "LinkedIn"
- },
- {
-  "title": "AI Product Manager",
-  "company": "First National Financial",
-  "location": "Toronto, ON",
-  "province": "ON",
-  "arrangement": "",
-  "job_type": "Full-time",
-  "posted": "2026-10-21",
-  "url": "https://to.indeed.com/aawnvtdpcy9c",
   "source": "Indeed"
  }
 ]
