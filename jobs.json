@@ -1,29 +1,5 @@
 [
  {
-  "title": "Junior Project Manager",
-  "company": "Canonical",
-  "location": "Remote (APAC,  LATAM,  Canada,  USA)",
-  "province": "",
-  "arrangement": "Remote",
-  "job_type": "Full Time",
-  "posted": "2026-11-12",
-  "url": "https://jobicy.com/jobs/150369-junior-project-manager",
-  "source": "Jobicy"
- },
- {
-  "title": "GTM Program Manager",
-  "company": "Dropbox",
-  "location": "Remote (Canada)",
-  "province": "",
-  "arrangement": "Remote",
-  "job_type": "Full Time",
-  "posted": "2026-11-12",
-  "url": "https://jobicy.com/jobs/161534-gtm-program-manager",
-  "source": "Jobicy",
-  "salary_min": 103700,
-  "salary_max": 140300
- },
- {
   "title": "Product Manager",
   "company": "BYD North America",
   "location": "Toronto, ON",
@@ -220,6 +196,41 @@
   "posted": "2026-11-12",
   "url": "https://to.indeed.com/aascltxrc988",
   "source": "Indeed"
+ },
+ {
+  "title": "Product Manager - Auth",
+  "company": "Supabase",
+  "location": "Remote (Anywhere)",
+  "province": "",
+  "arrangement": "Remote",
+  "job_type": "Full Time",
+  "posted": "2026-11-12",
+  "url": "https://jobicy.com/jobs/161691-product-manager-auth",
+  "source": "Jobicy"
+ },
+ {
+  "title": "Junior Project Manager",
+  "company": "Canonical",
+  "location": "Remote (APAC,  LATAM,  Canada,  USA)",
+  "province": "",
+  "arrangement": "Remote",
+  "job_type": "Full Time",
+  "posted": "2026-11-12",
+  "url": "https://jobicy.com/jobs/150369-junior-project-manager",
+  "source": "Jobicy"
+ },
+ {
+  "title": "GTM Program Manager",
+  "company": "Dropbox",
+  "location": "Remote (Canada)",
+  "province": "",
+  "arrangement": "Remote",
+  "job_type": "Full Time",
+  "posted": "2026-11-12",
+  "url": "https://jobicy.com/jobs/161534-gtm-program-manager",
+  "source": "Jobicy",
+  "salary_min": 103700,
+  "salary_max": 140300
  },
  {
   "title": "Project Manager",
@@ -1331,28 +1342,6 @@
   "posted": "2026-11-06",
   "url": "https://to.indeed.com/aan9qmpljf2m",
   "source": "Indeed"
- },
- {
-  "title": "Senior Product Manager, Workflows",
-  "company": "Customer.io",
-  "location": "Remote (LATAM,  Canada,  USA)",
-  "province": "",
-  "arrangement": "Remote",
-  "job_type": "Full Time",
-  "posted": "2026-11-06",
-  "url": "https://jobicy.com/jobs/159314-senior-product-manager-workflows",
-  "source": "Jobicy"
- },
- {
-  "title": "Clinical Project Manager",
-  "company": "Alimentiv",
-  "location": "Remote (Canada,  USA)",
-  "province": "",
-  "arrangement": "Remote",
-  "job_type": "Full Time",
-  "posted": "2026-11-06",
-  "url": "https://jobicy.com/jobs/159237-clinical-project-manager",
-  "source": "Jobicy"
  },
  {
   "title": "Project Management Enablement Sr. Specialist",
@@ -3106,60 +3095,5 @@
   "posted": "2026-10-23",
   "url": "https://www.linkedin.com/jobs/view/4482120563/",
   "source": "LinkedIn"
- },
- {
-  "title": "Manager, Projects - Foundation",
-  "company": "CAMH",
-  "location": "Toronto, ON",
-  "province": "ON",
-  "arrangement": "",
-  "job_type": "",
-  "posted": "2026-10-22",
-  "url": "https://www.linkedin.com/jobs/view/4479167557/",
-  "source": "LinkedIn"
- },
- {
-  "title": "Technical Program Manager",
-  "company": "Capgemini",
-  "location": "Toronto, ON",
-  "province": "ON",
-  "arrangement": "",
-  "job_type": "",
-  "posted": "2026-10-22",
-  "url": "https://www.linkedin.com/jobs/view/4481793713/",
-  "source": "LinkedIn"
- },
- {
-  "title": "Program Manager, ICAT",
-  "company": "University Health Network",
-  "location": "Toronto, ON",
-  "province": "ON",
-  "arrangement": "",
-  "job_type": "",
-  "posted": "2026-10-22",
-  "url": "https://www.linkedin.com/jobs/view/4482078728/",
-  "source": "LinkedIn"
- },
- {
-  "title": "Project Manager, Development",
-  "company": "Penalta Group Ltd.",
-  "location": "Oakville, ON",
-  "province": "ON",
-  "arrangement": "",
-  "job_type": "Full-time",
-  "posted": "2026-10-22",
-  "url": "https://to.indeed.com/aavglnym74sh",
-  "source": "Indeed"
- },
- {
-  "title": "Product Owner, Contact Center Pod",
-  "company": "Momentum Financial Services Group",
-  "location": "Toronto, ON",
-  "province": "ON",
-  "arrangement": "",
-  "job_type": "",
-  "posted": "2026-10-22",
-  "url": "https://to.indeed.com/aawfrvglh4h6",
-  "source": "Indeed"
  }
 ]
