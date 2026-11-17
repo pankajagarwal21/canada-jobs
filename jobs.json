@@ -1,29 +1,5 @@
 [
  {
-  "title": "Senior Product Manager (Credit Cards) - Canada",
-  "company": "NerdWallet",
-  "location": "Remote (Canada)",
-  "province": "",
-  "arrangement": "Remote",
-  "job_type": "Full Time",
-  "posted": "2026-11-16",
-  "url": "https://jobicy.com/jobs/162663-senior-product-manager-credit-cards-canada",
-  "source": "Jobicy",
-  "salary_min": 135000,
-  "salary_max": 226000
- },
- {
-  "title": "Staff Product Manager, Self-Hosted and Connected Temporal",
-  "company": "Temporal Technologies",
-  "location": "Remote (Canada,  USA)",
-  "province": "",
-  "arrangement": "Remote",
-  "job_type": "Full Time",
-  "posted": "2026-11-16",
-  "url": "https://jobicy.com/jobs/162622-staff-product-manager-self-hosted-and-connected-temporal",
-  "source": "Jobicy"
- },
- {
   "title": "IT Project Manager (Contact Center)",
   "company": "Dexian",
   "location": "Greater Toronto Area, Canada",
@@ -99,6 +75,30 @@
   "posted": "2026-11-16",
   "url": "https://www.linkedin.com/jobs/view/4490634421/",
   "source": "LinkedIn"
+ },
+ {
+  "title": "Senior Product Manager (Credit Cards) - Canada",
+  "company": "NerdWallet",
+  "location": "Remote (Canada)",
+  "province": "",
+  "arrangement": "Remote",
+  "job_type": "Full Time",
+  "posted": "2026-11-16",
+  "url": "https://jobicy.com/jobs/162663-senior-product-manager-credit-cards-canada",
+  "source": "Jobicy",
+  "salary_min": 135000,
+  "salary_max": 226000
+ },
+ {
+  "title": "Staff Product Manager, Self-Hosted and Connected Temporal",
+  "company": "Temporal Technologies",
+  "location": "Remote (Canada,  USA)",
+  "province": "",
+  "arrangement": "Remote",
+  "job_type": "Full Time",
+  "posted": "2026-11-16",
+  "url": "https://jobicy.com/jobs/162622-staff-product-manager-self-hosted-and-connected-temporal",
+  "source": "Jobicy"
  },
  {
   "title": "Project Manager - PMO",
@@ -673,6 +673,17 @@
   "source": "Indeed"
  },
  {
+  "title": "Program Manager, Indigenous & Northern Services",
+  "company": "Catalyste+",
+  "location": "Toronto, ON",
+  "province": "ON",
+  "arrangement": "",
+  "job_type": "",
+  "posted": "2026-11-12",
+  "url": "https://www.charityvillage.com/jobs/program-project-management-development/toronto",
+  "source": "CharityVillage"
+ },
+ {
   "title": "Product Manager - Auth",
   "company": "Supabase",
   "location": "Remote (Anywhere)",
@@ -706,17 +717,6 @@
   "source": "Jobicy",
   "salary_min": 103700,
   "salary_max": 140300
- },
- {
-  "title": "Program Manager, Indigenous & Northern Services",
-  "company": "Catalyste+",
-  "location": "Toronto, ON",
-  "province": "ON",
-  "arrangement": "",
-  "job_type": "",
-  "posted": "2026-11-12",
-  "url": "https://www.charityvillage.com/jobs/program-project-management-development/toronto",
-  "source": "CharityVillage"
  },
  {
   "title": "Project Manager",
@@ -1036,17 +1036,6 @@
   "posted": "2026-11-10",
   "url": "https://to.indeed.com/aag7rvph4pmw",
   "source": "Indeed"
- },
- {
-  "title": "Public Cloud Project Manager",
-  "company": "Canonical",
-  "location": "Remote (LATAM,  Canada,  USA)",
-  "province": "",
-  "arrangement": "Remote",
-  "job_type": "Full Time",
-  "posted": "2026-11-10",
-  "url": "https://jobicy.com/jobs/161107-public-cloud-project-manager",
-  "source": "Jobicy"
  },
  {
   "title": "Agile Process Specialist, Investly",
@@ -3118,50 +3107,6 @@
   "job_type": "",
   "posted": "2026-10-27",
   "url": "https://www.linkedin.com/jobs/view/4466735590/",
-  "source": "LinkedIn"
- },
- {
-  "title": "RQ00833 – Program Manager – Senior",
-  "company": "S M Software Solutions Inc",
-  "location": "Toronto, ON",
-  "province": "ON",
-  "arrangement": "",
-  "job_type": "",
-  "posted": "2026-10-26",
-  "url": "https://www.linkedin.com/jobs/view/4483502468/",
-  "source": "LinkedIn"
- },
- {
-  "title": "Project Control Officer",
-  "company": "Agilus Work Solutions",
-  "location": "Toronto, ON",
-  "province": "ON",
-  "arrangement": "",
-  "job_type": "",
-  "posted": "2026-10-26",
-  "url": "https://www.linkedin.com/jobs/view/4482684324/",
-  "source": "LinkedIn"
- },
- {
-  "title": "Senior Project Coordinator - Spencerville, Ontario",
-  "company": "Barton Malow",
-  "location": "Cambridge, ON",
-  "province": "ON",
-  "arrangement": "",
-  "job_type": "",
-  "posted": "2026-10-26",
-  "url": "https://www.linkedin.com/jobs/view/4474782854/",
-  "source": "LinkedIn"
- },
- {
-  "title": "Project Coordinator, Land Development",
-  "company": "R.V. Anderson Associates Limited",
-  "location": "Toronto, ON",
-  "province": "ON",
-  "arrangement": "",
-  "job_type": "",
-  "posted": "2026-10-26",
-  "url": "https://www.linkedin.com/jobs/view/4438663430/",
   "source": "LinkedIn"
  }
 ]
