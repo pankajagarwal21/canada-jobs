@@ -1,57 +1,37 @@
 [
  {
-  "title": "Enterprise Project Manager",
-  "company": "Canonical",
-  "location": "Remote (Anywhere)",
+  "title": "End User Support Program Manager (6 Month Contract)",
+  "company": "D2L",
+  "location": "Remote (Canada)",
   "province": "",
   "arrangement": "Remote",
-  "job_type": "Full Time",
-  "posted": "2026-11-25",
-  "url": "https://jobicy.com/jobs/149549-enterprise-project-manager",
-  "source": "Jobicy"
+  "job_type": "Contract",
+  "posted": "2026-11-26",
+  "url": "https://jobicy.com/jobs/164448-end-user-support-program-manager-6-month-contract",
+  "source": "Jobicy",
+  "salary_min": 60000,
+  "salary_max": 79000
  },
  {
-  "title": "Senior Product Manager",
-  "company": "Thinkific",
+  "title": "Technical Product Manager",
+  "company": "Neo Financial",
   "location": "Remote (Canada)",
   "province": "",
   "arrangement": "Remote",
   "job_type": "Full Time",
-  "posted": "2026-11-25",
-  "url": "https://jobicy.com/jobs/157007-senior-product-manager-12",
+  "posted": "2026-11-26",
+  "url": "https://jobicy.com/jobs/164332-technical-product-manager-6",
   "source": "Jobicy"
  },
  {
-  "title": "Senior Product Manager, User Acquisition",
-  "company": "RevenueCat",
-  "location": "Remote (APAC,  EMEA,  LATAM,  Canada,  USA)",
-  "province": "",
-  "arrangement": "Remote",
-  "job_type": "Full Time",
-  "posted": "2026-11-25",
-  "url": "https://jobicy.com/jobs/156992-senior-product-manager-user-acquisition",
-  "source": "Jobicy"
- },
- {
-  "title": "Senior Product Manager II - Vendor Spend",
+  "title": "Senior Product Manager II - Fraud & Identity",
   "company": "Wrapbook",
   "location": "Remote (Canada,  USA)",
   "province": "",
   "arrangement": "Remote",
-  "job_type": "Contract",
-  "posted": "2026-11-25",
-  "url": "https://jobicy.com/jobs/157030-senior-product-manager-ii-vendor-spend",
-  "source": "Jobicy"
- },
- {
-  "title": "Product Manager - Realtime",
-  "company": "Supabase",
-  "location": "Remote (Anywhere)",
-  "province": "",
-  "arrangement": "Remote",
   "job_type": "Full Time",
-  "posted": "2026-11-25",
-  "url": "https://jobicy.com/jobs/156943-product-manager-realtime",
+  "posted": "2026-11-26",
+  "url": "https://jobicy.com/jobs/157188-senior-product-manager-ii-fraud-identity",
   "source": "Jobicy"
  },
  {
@@ -308,14 +288,58 @@
   "source": "Indeed"
  },
  {
-  "title": "Senior Product Manager, Ad Monetization",
+  "title": "Enterprise Project Manager",
+  "company": "Canonical",
+  "location": "Remote (Anywhere)",
+  "province": "",
+  "arrangement": "Remote",
+  "job_type": "Full Time",
+  "posted": "2026-11-25",
+  "url": "https://jobicy.com/jobs/149549-enterprise-project-manager",
+  "source": "Jobicy"
+ },
+ {
+  "title": "Senior Product Manager",
+  "company": "Thinkific",
+  "location": "Remote (Canada)",
+  "province": "",
+  "arrangement": "Remote",
+  "job_type": "Full Time",
+  "posted": "2026-11-25",
+  "url": "https://jobicy.com/jobs/157007-senior-product-manager-12",
+  "source": "Jobicy"
+ },
+ {
+  "title": "Senior Product Manager, User Acquisition",
   "company": "RevenueCat",
   "location": "Remote (APAC,  EMEA,  LATAM,  Canada,  USA)",
   "province": "",
   "arrangement": "Remote",
   "job_type": "Full Time",
-  "posted": "2026-11-24",
-  "url": "https://jobicy.com/jobs/156738-senior-product-manager-ad-monetization",
+  "posted": "2026-11-25",
+  "url": "https://jobicy.com/jobs/156992-senior-product-manager-user-acquisition",
+  "source": "Jobicy"
+ },
+ {
+  "title": "Senior Product Manager II - Vendor Spend",
+  "company": "Wrapbook",
+  "location": "Remote (Canada,  USA)",
+  "province": "",
+  "arrangement": "Remote",
+  "job_type": "Contract",
+  "posted": "2026-11-25",
+  "url": "https://jobicy.com/jobs/157030-senior-product-manager-ii-vendor-spend",
+  "source": "Jobicy"
+ },
+ {
+  "title": "Product Manager - Realtime",
+  "company": "Supabase",
+  "location": "Remote (Anywhere)",
+  "province": "",
+  "arrangement": "Remote",
+  "job_type": "Full Time",
+  "posted": "2026-11-25",
+  "url": "https://jobicy.com/jobs/156943-product-manager-realtime",
   "source": "Jobicy"
  },
  {
@@ -504,6 +528,17 @@
   "posted": "2026-11-24",
   "url": "https://to.indeed.com/aah6whnj8tmw",
   "source": "Indeed"
+ },
+ {
+  "title": "Senior Product Manager, Ad Monetization",
+  "company": "RevenueCat",
+  "location": "Remote (APAC,  EMEA,  LATAM,  Canada,  USA)",
+  "province": "",
+  "arrangement": "Remote",
+  "job_type": "Full Time",
+  "posted": "2026-11-24",
+  "url": "https://jobicy.com/jobs/156738-senior-product-manager-ad-monetization",
+  "source": "Jobicy"
  },
  {
   "title": "Senior Product Manager, Payments-(Hybrid)",
@@ -902,43 +937,6 @@
   "source": "LinkedIn"
  },
  {
-  "title": "Technical Program Manager",
-  "company": "Phaidra",
-  "location": "Remote (Canada,  USA)",
-  "province": "",
-  "arrangement": "Remote",
-  "job_type": "Full Time",
-  "posted": "2026-11-21",
-  "url": "https://jobicy.com/jobs/145850-technical-program-manager-2",
-  "source": "Jobicy",
-  "salary_min": 69371,
-  "salary_max": 179573
- },
- {
-  "title": "Staff Data Product Manager (Machine Learning) - Canada",
-  "company": "NerdWallet",
-  "location": "Remote (Canada)",
-  "province": "",
-  "arrangement": "Remote",
-  "job_type": "Full Time",
-  "posted": "2026-11-21",
-  "url": "https://jobicy.com/jobs/163669-staff-data-product-manager-machine-learning-canada",
-  "source": "Jobicy",
-  "salary_min": 164000,
-  "salary_max": 248000
- },
- {
-  "title": "Staff Product Manager, Fintech New Bets",
-  "company": "Jobber",
-  "location": "Remote (Canada)",
-  "province": "",
-  "arrangement": "Remote",
-  "job_type": "Full Time",
-  "posted": "2026-11-21",
-  "url": "https://jobicy.com/jobs/153625-staff-product-manager-fintech-new-bets",
-  "source": "Jobicy"
- },
- {
   "title": "Product Owner, Travel Platforms",
   "company": "Air Canada",
   "location": "Toronto, ON",
@@ -1181,14 +1179,40 @@
   "source": "LinkedIn"
  },
  {
-  "title": "Senior Product Manager, Customer Experience",
+  "title": "Technical Program Manager",
+  "company": "Phaidra",
+  "location": "Remote (Canada,  USA)",
+  "province": "",
+  "arrangement": "Remote",
+  "job_type": "Full Time",
+  "posted": "2026-11-21",
+  "url": "https://jobicy.com/jobs/145850-technical-program-manager-2",
+  "source": "Jobicy",
+  "salary_min": 69371,
+  "salary_max": 179573
+ },
+ {
+  "title": "Staff Data Product Manager (Machine Learning) - Canada",
+  "company": "NerdWallet",
+  "location": "Remote (Canada)",
+  "province": "",
+  "arrangement": "Remote",
+  "job_type": "Full Time",
+  "posted": "2026-11-21",
+  "url": "https://jobicy.com/jobs/163669-staff-data-product-manager-machine-learning-canada",
+  "source": "Jobicy",
+  "salary_min": 164000,
+  "salary_max": 248000
+ },
+ {
+  "title": "Staff Product Manager, Fintech New Bets",
   "company": "Jobber",
   "location": "Remote (Canada)",
   "province": "",
   "arrangement": "Remote",
   "job_type": "Full Time",
-  "posted": "2026-11-20",
-  "url": "https://jobicy.com/jobs/163432-senior-product-manager-customer-experience",
+  "posted": "2026-11-21",
+  "url": "https://jobicy.com/jobs/153625-staff-product-manager-fintech-new-bets",
   "source": "Jobicy"
  },
  {
@@ -1322,6 +1346,17 @@
   "posted": "2026-11-20",
   "url": "https://www.linkedin.com/jobs/view/4492090574/",
   "source": "LinkedIn"
+ },
+ {
+  "title": "Senior Product Manager, Customer Experience",
+  "company": "Jobber",
+  "location": "Remote (Canada)",
+  "province": "",
+  "arrangement": "Remote",
+  "job_type": "Full Time",
+  "posted": "2026-11-20",
+  "url": "https://jobicy.com/jobs/163432-senior-product-manager-customer-experience",
+  "source": "Jobicy"
  },
  {
   "title": "Sr. Project Manager, IT",
@@ -1531,17 +1566,6 @@
   "posted": "2026-11-19",
   "url": "https://to.indeed.com/aawwkjs2qv2c",
   "source": "Indeed"
- },
- {
-  "title": "Senior Program Manager",
-  "company": "Juniper Square",
-  "location": "Remote (Canada,  USA)",
-  "province": "",
-  "arrangement": "Remote",
-  "job_type": "Full Time",
-  "posted": "2026-11-19",
-  "url": "https://jobicy.com/jobs/155920-senior-program-manager-2",
-  "source": "Jobicy"
  },
  {
   "title": "Project Manager (Temporary Full-Time)",
@@ -4049,215 +4073,6 @@
   "job_type": "Full-time",
   "posted": "2026-11-05",
   "url": "https://to.indeed.com/aacqzynf6szb",
-  "source": "Indeed"
- },
- {
-  "title": "Technology Project Manager",
-  "company": "Canada Life",
-  "location": "Toronto, ON",
-  "province": "ON",
-  "arrangement": "",
-  "job_type": "",
-  "posted": "2026-11-04",
-  "url": "https://www.linkedin.com/jobs/view/4485796165/",
-  "source": "LinkedIn"
- },
- {
-  "title": "Project Leader, Transit Facilities",
-  "company": "City of Mississauga",
-  "location": "Mississauga, ON",
-  "province": "ON",
-  "arrangement": "",
-  "job_type": "",
-  "posted": "2026-11-04",
-  "url": "https://www.linkedin.com/jobs/view/4484696978/",
-  "source": "LinkedIn"
- },
- {
-  "title": "Project Manager",
-  "company": "University of Guelph",
-  "location": "Guelph, ON",
-  "province": "ON",
-  "arrangement": "",
-  "job_type": "",
-  "posted": "2026-11-04",
-  "url": "https://www.linkedin.com/jobs/view/4485005577/",
-  "source": "LinkedIn"
- },
- {
-  "title": "Delivery Manager",
-  "company": "Nascent",
-  "location": "Toronto, ON",
-  "province": "ON",
-  "arrangement": "",
-  "job_type": "",
-  "posted": "2026-11-04",
-  "url": "https://www.linkedin.com/jobs/view/4485778636/",
-  "source": "LinkedIn"
- },
- {
-  "title": "Project Coordinator, Transportation",
-  "company": "NORR",
-  "location": "Toronto, ON",
-  "province": "ON",
-  "arrangement": "",
-  "job_type": "",
-  "posted": "2026-11-04",
-  "url": "https://www.linkedin.com/jobs/view/4484647132/",
-  "source": "LinkedIn"
- },
- {
-  "title": "Program Manager, Canada Hub Delivery",
-  "company": "Amazon",
-  "location": "Toronto, ON",
-  "province": "ON",
-  "arrangement": "",
-  "job_type": "",
-  "posted": "2026-11-04",
-  "url": "https://www.linkedin.com/jobs/view/4478792619/",
-  "source": "LinkedIn"
- },
- {
-  "title": "Project Coordinator",
-  "company": "Premform Ltd.",
-  "location": "Toronto, ON",
-  "province": "ON",
-  "arrangement": "",
-  "job_type": "",
-  "posted": "2026-11-04",
-  "url": "https://www.linkedin.com/jobs/view/4485733860/",
-  "source": "LinkedIn"
- },
- {
-  "title": "Technology Project Manager",
-  "company": "Canada Life",
-  "location": "London, ON",
-  "province": "ON",
-  "arrangement": "",
-  "job_type": "",
-  "posted": "2026-11-04",
-  "url": "https://www.linkedin.com/jobs/view/4485775841/",
-  "source": "LinkedIn"
- },
- {
-  "title": "Project Manager",
-  "company": "Insight Global",
-  "location": "Toronto, ON",
-  "province": "ON",
-  "arrangement": "",
-  "job_type": "",
-  "posted": "2026-11-04",
-  "url": "https://www.linkedin.com/jobs/view/4486055316/",
-  "source": "LinkedIn"
- },
- {
-  "title": "Project Manager/Leader - Senior",
-  "company": "Akkodis",
-  "location": "Toronto, ON",
-  "province": "ON",
-  "arrangement": "",
-  "job_type": "",
-  "posted": "2026-11-04",
-  "url": "https://www.linkedin.com/jobs/view/4467870154/",
-  "source": "LinkedIn"
- },
- {
-  "title": "Technical Program Manager",
-  "company": "Flexton Inc.",
-  "location": "Toronto, ON",
-  "province": "ON",
-  "arrangement": "",
-  "job_type": "",
-  "posted": "2026-11-04",
-  "url": "https://www.linkedin.com/jobs/view/4487047451/",
-  "source": "LinkedIn"
- },
- {
-  "title": "Project Manager",
-  "company": "University Health Network",
-  "location": "Toronto, ON",
-  "province": "ON",
-  "arrangement": "",
-  "job_type": "",
-  "posted": "2026-11-04",
-  "url": "https://www.linkedin.com/jobs/view/4486475298/",
-  "source": "LinkedIn"
- },
- {
-  "title": "Manager, Product Management",
-  "company": "Canada Life",
-  "location": "Toronto, ON",
-  "province": "ON",
-  "arrangement": "",
-  "job_type": "",
-  "posted": "2026-11-04",
-  "url": "https://www.linkedin.com/jobs/view/4485784439/",
-  "source": "LinkedIn"
- },
- {
-  "title": "Associate Product Owner, Travel",
-  "company": "Manulife",
-  "location": "Waterloo, ON",
-  "province": "ON",
-  "arrangement": "",
-  "job_type": "",
-  "posted": "2026-11-04",
-  "url": "https://www.linkedin.com/jobs/view/4485796409/",
-  "source": "LinkedIn"
- },
- {
-  "title": "Lead Digital Product Owner",
-  "company": "RBC",
-  "location": "Toronto, ON",
-  "province": "ON",
-  "arrangement": "",
-  "job_type": "",
-  "posted": "2026-11-04",
-  "url": "https://www.linkedin.com/jobs/view/4486840395/",
-  "source": "LinkedIn"
- },
- {
-  "title": "Product Manager - Business Platforms",
-  "company": "CDW",
-  "location": "Toronto, ON",
-  "province": "ON",
-  "arrangement": "",
-  "job_type": "",
-  "posted": "2026-11-04",
-  "url": "https://www.linkedin.com/jobs/view/4487029319/",
-  "source": "LinkedIn"
- },
- {
-  "title": "Technical Program / Product Manager (TPM)",
-  "company": "Bree",
-  "location": "Toronto, ON",
-  "province": "ON",
-  "arrangement": "",
-  "job_type": "",
-  "posted": "2026-11-04",
-  "url": "https://www.linkedin.com/jobs/view/4468057696/",
-  "source": "LinkedIn"
- },
- {
-  "title": "Senior ERP Project Manager",
-  "company": "IWI Consulting Group Inc",
-  "location": "Markham, ON",
-  "province": "ON",
-  "arrangement": "",
-  "job_type": "Full-time",
-  "posted": "2026-11-04",
-  "url": "https://to.indeed.com/aacycx77lc2b",
-  "source": "Indeed"
- },
- {
-  "title": "Scrum Master III - Toronto",
-  "company": "Randstad",
-  "location": "Toronto, ON",
-  "province": "ON",
-  "arrangement": "",
-  "job_type": "Temporary",
-  "posted": "2026-11-04",
-  "url": "https://to.indeed.com/aaxqj4sgwrqv",
   "source": "Indeed"
  }
 ]
